@@ -29,5 +29,7 @@ namespace ShotgunAdapters.com.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Caliber> Calibers { get; set; }
     }
 }
