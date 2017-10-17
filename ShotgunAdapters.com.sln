@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart", "..\_Reusabl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.PayPal", "..\_Reusables\C#\ShoppingCart.PayPal\ShoppingCart.PayPal\ShoppingCart.PayPal.csproj", "{601225F6-0D4D-41AE-89BA-5677D1354BFB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Image", "..\_Reusables\C#\Image\Image.csproj", "{EA5294A7-7F80-4DA0-960B-0AE3D376C841}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{601225F6-0D4D-41AE-89BA-5677D1354BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{601225F6-0D4D-41AE-89BA-5677D1354BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{601225F6-0D4D-41AE-89BA-5677D1354BFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA5294A7-7F80-4DA0-960B-0AE3D376C841}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA5294A7-7F80-4DA0-960B-0AE3D376C841}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA5294A7-7F80-4DA0-960B-0AE3D376C841}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA5294A7-7F80-4DA0-960B-0AE3D376C841}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

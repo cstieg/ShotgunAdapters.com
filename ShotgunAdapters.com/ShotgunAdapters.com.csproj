@@ -193,6 +193,7 @@
     <Compile Include="Controllers\CalibersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -200,12 +201,17 @@
     <Compile Include="Migrations\201710171321467_Caliber.Designer.cs">
       <DependentUpon>201710171321467_Caliber.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710171456485_Product.cs" />
+    <Compile Include="Migrations\201710171456485_Product.Designer.cs">
+      <DependentUpon>201710171456485_Product.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Caliber.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\WebImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -271,6 +277,11 @@
     <Content Include="Views\Calibers\Details.cshtml" />
     <Content Include="Views\Calibers\Edit.cshtml" />
     <Content Include="Views\Calibers\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -289,6 +300,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\_Reusables\C#\Image\Image.csproj">
+      <Project>{ea5294a7-7f80-4da0-960b-0ae3d376c841}</Project>
+      <Name>Image</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\_Reusables\C#\ShoppingCart.PayPal\ShoppingCart.PayPal\ShoppingCart.PayPal.csproj">
       <Project>{601225f6-0d4d-41ae-89ba-5677d1354bfb}</Project>
       <Name>ShoppingCart.PayPal</Name>
@@ -301,6 +316,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710171321467_Caliber.resx">
       <DependentUpon>201710171321467_Caliber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710171456485_Product.resx">
+      <DependentUpon>201710171456485_Product.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -31,5 +31,7 @@ namespace ShotgunAdapters.com.Models
         }
 
         public DbSet<Caliber> Calibers { get; set; }
+        public DbSet<ShotgunAdapters.com.Models.WebImage> WebImages { get; set; }
+        public DbSet<ShotgunAdapters.com.Models.Product> Products { get; set; }
     }
 }
