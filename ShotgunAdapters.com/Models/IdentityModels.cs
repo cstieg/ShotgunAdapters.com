@@ -3,8 +3,9 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Web.Helpers;
 
-namespace ShotgunAdapters.com.Models
+namespace ShotgunAdapters.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
@@ -31,7 +32,11 @@ namespace ShotgunAdapters.com.Models
         }
 
         public DbSet<Caliber> Calibers { get; set; }
-        public DbSet<ShotgunAdapters.com.Models.WebImage> WebImages { get; set; }
-        public DbSet<ShotgunAdapters.com.Models.Product> Products { get; set; }
+        public DbSet<WebImage> WebImages { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Cstieg.ShoppingCart.OrderDetail> OrderDetails { get; set; }
+        public DbSet<Cstieg.ShoppingCart.Customer> Customers { get; set; }
+        public DbSet<Cstieg.ShoppingCart.ShipToAddress> Addresses { get; set; }
+        public DbSet<Cstieg.ShoppingCart.Order> Orders { get; set; }
     }
 }

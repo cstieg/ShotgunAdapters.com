@@ -1,14 +1,13 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using ShotgunAdapters.com.Models;
+using ShotgunAdapters.Models;
 
-namespace ShotgunAdapters.com.Controllers
+namespace ShotgunAdapters.Controllers
 {
     [Authorize]
     public class ManageController : Controller

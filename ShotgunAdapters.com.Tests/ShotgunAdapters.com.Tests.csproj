@@ -34,6 +34,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>ShotgunAdapters.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework">
@@ -97,11 +103,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="ShotgunAdapters.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ShotgunAdapters.com\ShotgunAdapters.com.csproj">
-      <Project>{8B4ED692-AF67-4CF9-B236-134072BD42CE}</Project>
-      <Name>ShotgunAdapters.com</Name>
+    <ProjectReference Include="..\ShotgunAdapters.com\ShotgunAdapters.csproj">
+      <Project>{8b4ed692-af67-4cf9-b236-134072bd42ce}</Project>
+      <Name>ShotgunAdapters</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

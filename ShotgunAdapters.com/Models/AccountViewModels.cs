@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace ShotgunAdapters.com.Models
+namespace ShotgunAdapters.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

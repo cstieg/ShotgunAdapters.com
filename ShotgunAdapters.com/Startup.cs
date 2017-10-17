@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(ShotgunAdapters.com.Startup))]
-namespace ShotgunAdapters.com
+[assembly: OwinStartupAttribute(typeof(ShotgunAdapters.Startup))]
+namespace ShotgunAdapters
 {
     public partial class Startup
     {

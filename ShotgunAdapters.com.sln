@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShotgunAdapters.com", "ShotgunAdapters.com\ShotgunAdapters.com.csproj", "{8B4ED692-AF67-4CF9-B236-134072BD42CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShotgunAdapters", "ShotgunAdapters.com\ShotgunAdapters.csproj", "{8B4ED692-AF67-4CF9-B236-134072BD42CE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShotgunAdapters.com.Tests", "ShotgunAdapters.com.Tests\ShotgunAdapters.com.Tests.csproj", "{38D11CB1-CCF0-4805-B037-135D05870F6A}"
 EndProject
@@ -12,6 +12,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.PayPal", "..\_Reusables\C#\ShoppingCart.PayPal\ShoppingCart.PayPal\ShoppingCart.PayPal.csproj", "{601225F6-0D4D-41AE-89BA-5677D1354BFB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Image", "..\_Reusables\C#\Image\Image.csproj", "{EA5294A7-7F80-4DA0-960B-0AE3D376C841}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geography", "..\_Reusables\C#\Geography\Geography\Geography.csproj", "{C68013C0-5ECD-4C34-AE72-07F6742EFB70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringHelper", "..\_Reusables\C#\StringHelper\StringHelper.csproj", "{DFF3EF94-9144-45EB-BE2D-9BDE93671212}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SessionHelper", "..\_Reusables\C#\SessionHelper\SessionHelper\SessionHelper.csproj", "{890D5C31-8E0C-40F9-94DE-36B4FDDB2AAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +45,18 @@ Global
 		{EA5294A7-7F80-4DA0-960B-0AE3D376C841}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA5294A7-7F80-4DA0-960B-0AE3D376C841}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA5294A7-7F80-4DA0-960B-0AE3D376C841}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C68013C0-5ECD-4C34-AE72-07F6742EFB70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C68013C0-5ECD-4C34-AE72-07F6742EFB70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C68013C0-5ECD-4C34-AE72-07F6742EFB70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C68013C0-5ECD-4C34-AE72-07F6742EFB70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFF3EF94-9144-45EB-BE2D-9BDE93671212}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFF3EF94-9144-45EB-BE2D-9BDE93671212}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFF3EF94-9144-45EB-BE2D-9BDE93671212}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFF3EF94-9144-45EB-BE2D-9BDE93671212}.Release|Any CPU.Build.0 = Release|Any CPU
+		{890D5C31-8E0C-40F9-94DE-36B4FDDB2AAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{890D5C31-8E0C-40F9-94DE-36B4FDDB2AAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{890D5C31-8E0C-40F9-94DE-36B4FDDB2AAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{890D5C31-8E0C-40F9-94DE-36B4FDDB2AAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

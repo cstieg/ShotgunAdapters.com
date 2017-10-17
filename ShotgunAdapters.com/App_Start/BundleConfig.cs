@@ -1,7 +1,6 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
-namespace ShotgunAdapters.com
+namespace ShotgunAdapters
 {
     public class BundleConfig
     {

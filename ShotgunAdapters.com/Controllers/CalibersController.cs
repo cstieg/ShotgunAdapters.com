@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
-using ShotgunAdapters.com.Models;
+using ShotgunAdapters.Models;
 
-namespace ShotgunAdapters.com.Controllers
+namespace ShotgunAdapters.Controllers
 {
     public class CalibersController : Controller
     {

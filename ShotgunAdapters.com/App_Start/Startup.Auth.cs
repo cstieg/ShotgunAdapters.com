@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using ShotgunAdapters.com.Models;
+using ShotgunAdapters.Models;
 
-namespace ShotgunAdapters.com
+namespace ShotgunAdapters
 {
     public partial class Startup
     {

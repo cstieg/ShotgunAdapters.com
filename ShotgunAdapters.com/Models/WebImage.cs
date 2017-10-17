@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Cstieg.ShoppingCart;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShotgunAdapters.com.Models
 {

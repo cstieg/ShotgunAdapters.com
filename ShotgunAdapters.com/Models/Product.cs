@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Cstieg.Image;
 
-namespace ShotgunAdapters.com.Models
+namespace ShotgunAdapters.Models
 {
     public class Product : Cstieg.ShoppingCart.ProductBase
     {
@@ -20,4 +21,5 @@ namespace ShotgunAdapters.com.Models
         [InverseProperty("Product")]
         public IEnumerable<WebImage> WebImages { get; set; }
     }
+
 }

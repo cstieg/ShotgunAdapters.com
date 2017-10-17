@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ShotgunAdapters.com;
-using ShotgunAdapters.com.Controllers;
+using ShotgunAdapters;
+using ShotgunAdapters.Controllers;
 
-namespace ShotgunAdapters.com.Tests.Controllers
+namespace ShotgunAdapters.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest

@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
-using ShotgunAdapters.com.Models;
+using ShotgunAdapters.Models;
 
-namespace ShotgunAdapters.com.Controllers
+namespace ShotgunAdapters.Controllers
 {
     public class ProductsController : Controller
     {
@@ -13,8 +13,8 @@ namespace ShotgunAdapters.com.Controllers
         // GET: Products
         public async Task<ActionResult> Index()
         {
-            var products = db.Products.Include(p => p.AmmunitionCaliber).Include(p => p.GunCaliber);
-            return View(await products.ToListAsync());
+            var productBases = db.Products.Include(p => p.AmmunitionCaliber).Include(p => p.GunCaliber);
+            return View(await productBases.ToListAsync());
         }
 
         // GET: Products/Details/5
@@ -45,7 +45,7 @@ namespace ShotgunAdapters.com.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,GunCaliberId,AmmunitionCaliberId,ProductInfo,Name,Description,Price,Shipping,ImageUrl,ImageSrcSet,Category,DisplayOnFrontPage,DoNotDisplay")] Product product)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Description,Price,Shipping,ImageUrl,ImageSrcSet,Category,DisplayOnFrontPage,DoNotDisplay,GunCaliberId,AmmunitionCaliberId,ProductInfo")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -81,7 +81,7 @@ namespace ShotgunAdapters.com.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,GunCaliberId,AmmunitionCaliberId,ProductInfo,Name,Description,Price,Shipping,ImageUrl,ImageSrcSet,Category,DisplayOnFrontPage,DoNotDisplay")] Product product)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description,Price,Shipping,ImageUrl,ImageSrcSet,Category,DisplayOnFrontPage,DoNotDisplay,GunCaliberId,AmmunitionCaliberId,ProductInfo")] Product product)
         {
             if (ModelState.IsValid)
             {
