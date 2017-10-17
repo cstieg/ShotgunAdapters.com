@@ -190,12 +190,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CalibersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710171321467_Caliber.cs" />
+    <Compile Include="Migrations\201710171321467_Caliber.Designer.cs">
+      <DependentUpon>201710171321467_Caliber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Caliber.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -258,6 +266,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Calibers\Create.cshtml" />
+    <Content Include="Views\Calibers\Delete.cshtml" />
+    <Content Include="Views\Calibers\Details.cshtml" />
+    <Content Include="Views\Calibers\Edit.cshtml" />
+    <Content Include="Views\Calibers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -274,6 +287,21 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\_Reusables\C#\ShoppingCart.PayPal\ShoppingCart.PayPal\ShoppingCart.PayPal.csproj">
+      <Project>{601225f6-0d4d-41ae-89ba-5677d1354bfb}</Project>
+      <Name>ShoppingCart.PayPal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\_Reusables\C#\ShoppingCart\ShoppingCart\ShoppingCart.csproj">
+      <Project>{db2b6bdc-fae9-4263-8b08-94fbee9a3850}</Project>
+      <Name>ShoppingCart</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710171321467_Caliber.resx">
+      <DependentUpon>201710171321467_Caliber.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
