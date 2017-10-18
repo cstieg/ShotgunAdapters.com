@@ -195,6 +195,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -287,6 +288,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ShoppingCart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -302,6 +304,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\_Reusables\C#\ControllerHelper\ControllerHelper\ControllerHelper.csproj">
+      <Project>{c8db3f11-651c-4a00-b2d6-650700d0007f}</Project>
+      <Name>ControllerHelper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\_Reusables\C#\Geography\Geography\Geography.csproj">
       <Project>{c68013c0-5ecd-4c34-ae72-07f6742efb70}</Project>
       <Name>Geography</Name>
