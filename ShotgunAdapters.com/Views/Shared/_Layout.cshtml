@@ -37,8 +37,11 @@
         </footer>
     </div>
 
+    <div id="anti-forgery-token" class="hidden">@Html.AntiForgeryToken()</div>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/js")
     @RenderSection("scripts", required: false)
 </body>
 </html>

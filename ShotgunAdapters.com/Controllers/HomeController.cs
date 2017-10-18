@@ -1,9 +1,13 @@
-﻿using System.Web.Mvc;
+﻿using ShotgunAdapters.Models;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace ShotgunAdapters.Controllers
 {
     public class HomeController : Controller
     {
+        ApplicationDbContext db = new ApplicationDbContext();
+
         public ActionResult Index()
         {
             return View();
@@ -21,6 +25,12 @@ namespace ShotgunAdapters.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult Products()
+        {
+            var products = db.Products.ToList();
+            return View(products);
         }
     }
 }
