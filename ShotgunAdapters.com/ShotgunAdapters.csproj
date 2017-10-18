@@ -198,9 +198,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710172214297_initial.cs" />
-    <Compile Include="Migrations\201710172214297_initial.Designer.cs">
-      <DependentUpon>201710172214297_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201710180035593_Initial.cs" />
+    <Compile Include="Migrations\201710180035593_Initial.Designer.cs">
+      <DependentUpon>201710180035593_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -274,16 +274,16 @@
     <Content Include="Views\Calibers\Edit.cshtml" />
     <Content Include="Views\Calibers\Index.cshtml" />
     <Content Include="ShotgunAdapters.pfx" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
-    <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Orders\Create.cshtml" />
     <Content Include="Views\Orders\Delete.cshtml" />
     <Content Include="Views\Orders\Details.cshtml" />
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -320,8 +320,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710172214297_initial.resx">
-      <DependentUpon>201710172214297_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710180035593_Initial.resx">
+      <DependentUpon>201710180035593_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

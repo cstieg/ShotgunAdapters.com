@@ -13,8 +13,8 @@ namespace ShotgunAdapters.Controllers
         // GET: Products
         public async Task<ActionResult> Index()
         {
-            var productBases = db.Products.Include(p => p.AmmunitionCaliber).Include(p => p.GunCaliber);
-            return View(await productBases.ToListAsync());
+            var products = db.Products.Include(p => p.AmmunitionCaliber).Include(p => p.GunCaliber);
+            return View(await products.ToListAsync());
         }
 
         // GET: Products/Details/5

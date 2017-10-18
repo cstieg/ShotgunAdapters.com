@@ -3,12 +3,12 @@ namespace ShotgunAdapters.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.ShipToAddresses",
+                "dbo.Addresses",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -64,7 +64,7 @@ namespace ShotgunAdapters.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Orders", t => t.OrderId, cascadeDelete: true)
-                .ForeignKey("dbo.Products", t => t.ProductId, cascadeDelete: true)
+                .ForeignKey("dbo.ProductBases", t => t.ProductId, cascadeDelete: true)
                 .Index(t => t.ProductId)
                 .Index(t => t.OrderId);
             
@@ -79,15 +79,15 @@ namespace ShotgunAdapters.Migrations
                         BillToAddressId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.ShipToAddresses", t => t.BillToAddressId, cascadeDelete: false)
+                .ForeignKey("dbo.Addresses", t => t.BillToAddressId, cascadeDelete: false)
                 .ForeignKey("dbo.Customers", t => t.CustomerId, cascadeDelete: true)
-                .ForeignKey("dbo.ShipToAddresses", t => t.ShipToAddressId, cascadeDelete: false)
+                .ForeignKey("dbo.Addresses", t => t.ShipToAddressId, cascadeDelete: false)
                 .Index(t => t.CustomerId)
                 .Index(t => t.ShipToAddressId)
                 .Index(t => t.BillToAddressId);
             
             CreateTable(
-                "dbo.Products",
+                "dbo.ProductBases",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -100,16 +100,8 @@ namespace ShotgunAdapters.Migrations
                         Category = c.String(maxLength: 50),
                         DisplayOnFrontPage = c.Boolean(nullable: false),
                         DoNotDisplay = c.Boolean(nullable: false),
-                        GunCaliberId = c.Int(),
-                        AmmunitionCaliberId = c.Int(),
-                        ProductInfo = c.String(maxLength: 2000),
-                        Discriminator = c.String(nullable: false, maxLength: 128),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Calibers", t => t.AmmunitionCaliberId, cascadeDelete: true)
-                .ForeignKey("dbo.Calibers", t => t.GunCaliberId, cascadeDelete: false)
-                .Index(t => t.GunCaliberId)
-                .Index(t => t.AmmunitionCaliberId);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -179,36 +171,68 @@ namespace ShotgunAdapters.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
+            CreateTable(
+                "dbo.WebImages",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        ImageUrl = c.String(nullable: false, maxLength: 200),
+                        ImageSrcSet = c.String(maxLength: 1000),
+                        Caption = c.String(maxLength: 100),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Products",
+                c => new
+                    {
+                        Id = c.Int(nullable: false),
+                        GunCaliberId = c.Int(nullable: false),
+                        AmmunitionCaliberId = c.Int(nullable: false),
+                        ProductInfo = c.String(maxLength: 2000),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.ProductBases", t => t.Id)
+                .ForeignKey("dbo.Calibers", t => t.GunCaliberId, cascadeDelete: true)
+                .ForeignKey("dbo.Calibers", t => t.AmmunitionCaliberId, cascadeDelete: false)
+                .Index(t => t.Id)
+                .Index(t => t.GunCaliberId)
+                .Index(t => t.AmmunitionCaliberId);
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.Products", "AmmunitionCaliberId", "dbo.Calibers");
+            DropForeignKey("dbo.Products", "GunCaliberId", "dbo.Calibers");
+            DropForeignKey("dbo.Products", "Id", "dbo.ProductBases");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.OrderDetails", "ProductId", "dbo.Products");
-            DropForeignKey("dbo.Products", "GunCaliberId", "dbo.Calibers");
-            DropForeignKey("dbo.Products", "AmmunitionCaliberId", "dbo.Calibers");
-            DropForeignKey("dbo.Orders", "ShipToAddressId", "dbo.ShipToAddresses");
+            DropForeignKey("dbo.OrderDetails", "ProductId", "dbo.ProductBases");
+            DropForeignKey("dbo.Orders", "ShipToAddressId", "dbo.Addresses");
             DropForeignKey("dbo.OrderDetails", "OrderId", "dbo.Orders");
             DropForeignKey("dbo.Orders", "CustomerId", "dbo.Customers");
-            DropForeignKey("dbo.Orders", "BillToAddressId", "dbo.ShipToAddresses");
-            DropForeignKey("dbo.ShipToAddresses", "CustomerId", "dbo.Customers");
+            DropForeignKey("dbo.Orders", "BillToAddressId", "dbo.Addresses");
+            DropForeignKey("dbo.Addresses", "CustomerId", "dbo.Customers");
+            DropIndex("dbo.Products", new[] { "AmmunitionCaliberId" });
+            DropIndex("dbo.Products", new[] { "GunCaliberId" });
+            DropIndex("dbo.Products", new[] { "Id" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.ProductBases", new[] { "AmmunitionCaliberId" });
-            DropIndex("dbo.ProductBases", new[] { "GunCaliberId" });
             DropIndex("dbo.Orders", new[] { "BillToAddressId" });
             DropIndex("dbo.Orders", new[] { "ShipToAddressId" });
             DropIndex("dbo.Orders", new[] { "CustomerId" });
             DropIndex("dbo.OrderDetails", new[] { "OrderId" });
             DropIndex("dbo.OrderDetails", new[] { "ProductId" });
-            DropIndex("dbo.ShipToAddresses", new[] { "CustomerId" });
+            DropIndex("dbo.Addresses", new[] { "CustomerId" });
+            DropTable("dbo.Products");
+            DropTable("dbo.WebImages");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
@@ -219,7 +243,7 @@ namespace ShotgunAdapters.Migrations
             DropTable("dbo.OrderDetails");
             DropTable("dbo.Calibers");
             DropTable("dbo.Customers");
-            DropTable("dbo.ShipToAddresses");
+            DropTable("dbo.Addresses");
         }
     }
 }

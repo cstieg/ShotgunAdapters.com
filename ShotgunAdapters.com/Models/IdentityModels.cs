@@ -31,12 +31,28 @@ namespace ShotgunAdapters.Models
             return new ApplicationDbContext();
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Caliber>().ToTable("Calibers");
+            modelBuilder.Entity<Cstieg.Image.WebImage>().ToTable("WebImages");
+            modelBuilder.Entity<Product>().ToTable("Products");
+            modelBuilder.Entity<Cstieg.ShoppingCart.Order>().ToTable("Orders");
+            modelBuilder.Entity<Cstieg.ShoppingCart.OrderDetail>().ToTable("OrderDetails");
+            modelBuilder.Entity<Cstieg.ShoppingCart.Customer>().ToTable("Customers");
+            modelBuilder.Entity<Cstieg.ShoppingCart.ShipToAddress>().ToTable("Addresses");
+        }
+
+
         public DbSet<Caliber> Calibers { get; set; }
-        public DbSet<WebImage> WebImages { get; set; }
+        public DbSet<Cstieg.Image.WebImage> WebImages { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Cstieg.ShoppingCart.OrderDetail> OrderDetails { get; set; }
         public DbSet<Cstieg.ShoppingCart.Customer> Customers { get; set; }
         public DbSet<Cstieg.ShoppingCart.ShipToAddress> Addresses { get; set; }
         public DbSet<Cstieg.ShoppingCart.Order> Orders { get; set; }
+
+
     }
 }
