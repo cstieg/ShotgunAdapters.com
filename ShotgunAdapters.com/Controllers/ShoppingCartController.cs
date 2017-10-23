@@ -1,5 +1,6 @@
 ﻿using Cstieg.ControllerHelper;
 using Cstieg.ShoppingCart;
+using Cstieg.ShoppingCart.PayPal;
 using ShotgunAdapters.Models;
 using System;
 using System.Linq;
@@ -13,8 +14,7 @@ namespace ShotgunAdapters.Controllers
     public class ShoppingCartController : Controller
     {
         // if using ShoppingCart.PayPal, uncomment this next line and delete the following
-        //ClientInfo ClientInfo = new PayPalApiClient().GetClientSecrets();
-        object ClientInfo = null;
+        ClientInfo ClientInfo = new PayPalApiClient().GetClientSecrets();
         ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ShoppingCart
@@ -92,7 +92,6 @@ namespace ShotgunAdapters.Controllers
             {
                 return this.JError(403, e.Message);
             }
-
         }
 
         /// <summary>
@@ -158,7 +157,6 @@ namespace ShotgunAdapters.Controllers
                 return this.JError(403, e.Message);
             }
         }
-       
 
     }
 }
