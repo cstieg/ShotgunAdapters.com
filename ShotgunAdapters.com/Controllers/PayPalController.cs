@@ -15,19 +15,9 @@ namespace ShotgunAdapters.Controllers
     /// <summary>
     /// Controller to provide shopping cart view
     /// </summary>
-    public class PayPalController : Controller
+    public class PayPalController : BaseController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
         private PayPalApiClient _paypalClient = new PayPalApiClient();
-
-        // GET: ShoppingCart
-        public ActionResult Index()
-        {
-            ViewBag.ClientInfo = new PayPalApiClient().GetClientSecrets();
-            ShoppingCart shoppingCart = ShoppingCart.GetFromSession(HttpContext);
-            return View(shoppingCart);
-        }
-
 
         public string GetOrderJson()
         {

@@ -7,15 +7,8 @@ using System.Web.Mvc;
 
 namespace ShotgunAdapters.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        ApplicationDbContext db = new ApplicationDbContext();
-
-        public HomeController()
-        {
-            ViewBag.GunCalibers = db.Calibers.ToList();
-        }
-
         public ActionResult Index()
         {
             return View();

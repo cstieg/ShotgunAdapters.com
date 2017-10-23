@@ -3,14 +3,11 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
 using Cstieg.ShoppingCart;
-using ShotgunAdapters.Models;
 
 namespace ShotgunAdapters.Controllers
 {
-    public class OrdersController : Controller
+    public class OrdersController : BaseController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-
         // GET: Orders
         public async Task<ActionResult> Index()
         {

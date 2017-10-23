@@ -11,11 +11,10 @@ namespace ShotgunAdapters.Controllers
     /// <summary>
     /// Controller to provide shopping cart view
     /// </summary>
-    public class ShoppingCartController : Controller
+    public class ShoppingCartController : BaseController
     {
         // if using ShoppingCart.PayPal, uncomment this next line and delete the following
         ClientInfo ClientInfo = new PayPalApiClient().GetClientSecrets();
-        ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ShoppingCart
         public ActionResult Index()

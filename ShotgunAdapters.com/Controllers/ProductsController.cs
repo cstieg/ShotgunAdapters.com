@@ -6,10 +6,8 @@ using ShotgunAdapters.Models;
 
 namespace ShotgunAdapters.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductsController : BaseController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-
         // GET: Products
         public async Task<ActionResult> Index()
         {

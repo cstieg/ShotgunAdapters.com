@@ -10,7 +10,7 @@ using ShotgunAdapters.Models;
 namespace ShotgunAdapters.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
