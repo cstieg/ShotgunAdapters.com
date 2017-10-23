@@ -13,11 +13,10 @@ namespace ShotgunAdapters.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Products()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            var products = db.Products.ToList();
+            return View(products);
         }
 
         public ActionResult Contact()
@@ -27,10 +26,25 @@ namespace ShotgunAdapters.Controllers
             return View();
         }
 
-        public ActionResult Products()
+        public ActionResult About()
         {
-            var products = db.Products.ToList();
-            return View(products);
+            ViewBag.Message = "Your application description page.";
+            return View();
         }
+
+        public ActionResult Reviews()
+        {
+            ViewBag.Message = "Your application description page.";
+            return View();
+        }
+
+        public ActionResult Faq()
+        {
+            ViewBag.Message = "Your application description page.";
+            return View();
+        }
+
+
+
     }
 }
