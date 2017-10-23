@@ -1,5 +1,8 @@
 ﻿using ShotgunAdapters.Models;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace ShotgunAdapters.Controllers
@@ -8,14 +11,27 @@ namespace ShotgunAdapters.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
+        public HomeController()
+        {
+            ViewBag.GunCalibers = db.Calibers.ToList();
+        }
+
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Products()
+        public async Task<ActionResult> Products(int? gunCaliberId = null)
         {
-            var products = db.Products.ToList();
+            List<Product> products;
+            if (gunCaliberId == null)
+            {
+                products = await db.Products.ToListAsync();
+            }
+            else
+            {
+                products = await db.Products.Where(p => p.GunCaliberId == gunCaliberId).ToListAsync();
+            }
             return View(products);
         }
 
