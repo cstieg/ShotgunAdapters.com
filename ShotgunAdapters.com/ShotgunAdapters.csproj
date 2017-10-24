@@ -206,6 +206,10 @@
     <Compile Include="Migrations\201710180035593_Initial.Designer.cs">
       <DependentUpon>201710180035593_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710240153068_CaliberDiameterPrecision.cs" />
+    <Compile Include="Migrations\201710240153068_CaliberDiameterPrecision.Designer.cs">
+      <DependentUpon>201710240153068_CaliberDiameterPrecision.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Caliber.cs" />
@@ -298,6 +302,7 @@
     <Content Include="Views\ShoppingCart\OrderSuccess.cshtml" />
     <Content Include="Views\Home\FAQ.cshtml" />
     <Content Include="Views\Home\Reviews.cshtml" />
+    <Content Include="Views\Products\_ModifyPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -341,6 +346,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710180035593_Initial.resx">
       <DependentUpon>201710180035593_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710240153068_CaliberDiameterPrecision.resx">
+      <DependentUpon>201710240153068_CaliberDiameterPrecision.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

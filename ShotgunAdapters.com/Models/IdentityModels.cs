@@ -35,7 +35,8 @@ namespace ShotgunAdapters.Models
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Caliber>().ToTable("Calibers");
+            modelBuilder.Entity<Caliber>().ToTable("Calibers")
+                .Property(c => c.Diameter).HasPrecision(18, 3);
             modelBuilder.Entity<Cstieg.Image.WebImage>().ToTable("WebImages");
             modelBuilder.Entity<Product>().ToTable("Products");
             modelBuilder.Entity<Cstieg.ShoppingCart.Order>().ToTable("Orders");

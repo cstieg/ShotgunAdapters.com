@@ -10,6 +10,7 @@ namespace ShotgunAdapters.Models
         [Required]
         public string Name { get; set; }
 
-        public decimal Diameter { get; set; }
+        [Display(Name = "Diameter in Inches")]
+        public decimal? Diameter { get; set; }
     }
 }
