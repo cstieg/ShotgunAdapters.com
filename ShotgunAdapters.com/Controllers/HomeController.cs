@@ -14,16 +14,16 @@ namespace ShotgunAdapters.Controllers
             return View();
         }
 
-        public async Task<ActionResult> Products(int? gunCaliberId = null)
+        public async Task<ActionResult> Products(int? id = null)
         {
             List<Product> products;
-            if (gunCaliberId == null)
+            if (id == null)
             {
                 products = await db.Products.ToListAsync();
             }
             else
             {
-                products = await db.Products.Where(p => p.GunCaliberId == gunCaliberId).ToListAsync();
+                products = await db.Products.Where(p => p.GunCaliberId == id).ToListAsync();
             }
             return View(products);
         }
