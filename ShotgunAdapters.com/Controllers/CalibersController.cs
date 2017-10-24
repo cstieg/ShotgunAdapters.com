@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
 using ShotgunAdapters.Models;
+using System.Collections.Generic;
 
 namespace ShotgunAdapters.Controllers
 {
@@ -76,6 +77,11 @@ namespace ShotgunAdapters.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Detach caliber in ViewBag before saving edit
+                List<Caliber> calibers = ViewBag.GunCalibers;
+                var caliberInViewBag = calibers.Find(c => c.Id == caliber.Id);
+                db.Entry(caliberInViewBag).State = EntityState.Detached;
+
                 db.Entry(caliber).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
