@@ -27,19 +27,10 @@
             @Html.DisplayNameFor(model => model.ImageUrl)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ImageSrcSet)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.DisplayOnFrontPage)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DoNotDisplay)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductInfo)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.AmmunitionCaliber.Name)
@@ -65,22 +56,13 @@
             @Html.DisplayFor(modelItem => item.Shipping)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ImageUrl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageSrcSet)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category)
+            <img src="@item.ImageUrl" />
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DisplayOnFrontPage)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DoNotDisplay)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductInfo)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.AmmunitionCaliber.Name)

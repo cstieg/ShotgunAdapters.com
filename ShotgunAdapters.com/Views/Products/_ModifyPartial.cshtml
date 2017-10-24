@@ -1,6 +1,6 @@
 ﻿@model ShotgunAdapters.Models.Product
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -12,6 +12,22 @@
         {
             @Html.HiddenFor(model => model.Id)
         }
+        <div class="form-group">
+            @Html.LabelFor(model => model.GunCaliberId, "GunCaliberId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("GunCaliberId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.GunCaliberId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AmmunitionCaliberId, "AmmunitionCaliberId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("AmmunitionCaliberId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AmmunitionCaliberId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -47,24 +63,26 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ImageUrl, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ImageUrl, new { htmlAttributes = new { @class = "form-control" } })
+                <!-- Image preview -->
+                @if (ViewBag.Title == "Edit")
+                {
+                    @Html.HiddenFor(model => model.ImageUrl)
+                    <img id="upload-image-preview" src="@Html.DisplayFor(model => model.ImageUrl)" />
+                }
+                else
+                {
+                    <img id="upload-image-preview" />
+                }
+                <label for="imageFile" class="btn btn-default">Select new image</label>
+                <input id="imageFile" type="file" name="imageFile" class="hidden" onchange="imageUploadPreview('#upload-image-preview')" />
+                <p>
+                    Please keep in mind the following guidelines:
+                </p>
+                <ul>
+                    <li>Optimally, filenames should be descriptive -- 12gaugeto20gauge.jpg</li>
+                    <li>Files will be automatically resized down as necessary; file sizes of 1MB to 5MB are optimal.</li>
+                </ul>
                 @Html.ValidationMessageFor(model => model.ImageUrl, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ImageSrcSet, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ImageSrcSet, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ImageSrcSet, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -85,22 +103,6 @@
                     @Html.EditorFor(model => model.DoNotDisplay)
                     @Html.ValidationMessageFor(model => model.DoNotDisplay, "", new { @class = "text-danger" })
                 </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.GunCaliberId, "GunCaliberId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("GunCaliberId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.GunCaliberId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.AmmunitionCaliberId, "AmmunitionCaliberId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("AmmunitionCaliberId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.AmmunitionCaliberId, "", new { @class = "text-danger" })
             </div>
         </div>
 

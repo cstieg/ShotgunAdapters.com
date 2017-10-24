@@ -3,6 +3,10 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
 using ShotgunAdapters.Models;
+using Cstieg.WebFiles;
+using System.Collections.Generic;
+using System.Web;
+using Cstieg.WebFiles.Controllers;
 
 namespace ShotgunAdapters.Controllers
 {
@@ -43,10 +47,27 @@ namespace ShotgunAdapters.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Description,Price,Shipping,ImageUrl,ImageSrcSet,Category,DisplayOnFrontPage,DoNotDisplay,GunCaliberId,AmmunitionCaliberId,ProductInfo")] Product product)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Description,Price,Shipping,ImageUrl,DisplayOnFrontPage,DoNotDisplay,GunCaliberId,AmmunitionCaliberId,ProductInfo")] Product product)
         {
+            // Check file is exists and is valid image
+            HttpPostedFileBase imageFile = _ModelControllersHelper.GetImageFile(ModelState, Request, "");
+
             if (ModelState.IsValid)
             {
+                // Save image to disk and store filepath in model
+                try
+                {
+                    string timeStamp = FileManager.GetTimeStamp();
+                    product.ImageUrl = imageManager.SaveFile(imageFile, 200, true, timeStamp);
+                    product.ImageSrcSet = imageManager.SaveImageMultipleSizes(imageFile, new List<int>() { 800, 400, 200, 100 }, true, timeStamp);
+                }
+                catch
+                {
+                    ModelState.AddModelError("ImageUrl", "Failure saving image. Please try again.");
+                    return View(product);
+                }
+
+                // add new model
                 db.Products.Add(product);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -79,10 +100,27 @@ namespace ShotgunAdapters.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description,Price,Shipping,ImageUrl,ImageSrcSet,Category,DisplayOnFrontPage,DoNotDisplay,GunCaliberId,AmmunitionCaliberId,ProductInfo")] Product product)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description,Price,Shipping,ImageUrl,DisplayOnFrontPage,DoNotDisplay,GunCaliberId,AmmunitionCaliberId,ProductInfo")] Product product)
         {
+            // Check file is exists and is valid image
+            HttpPostedFileBase imageFile = _ModelControllersHelper.GetImageFile(ModelState, Request, "");
+
             if (ModelState.IsValid)
             {
+                // Save image to disk and store filepath in model
+                try
+                {
+                    string timeStamp = FileManager.GetTimeStamp();
+                    product.ImageUrl = imageManager.SaveFile(imageFile, 200, true, timeStamp);
+                    product.ImageSrcSet = imageManager.SaveImageMultipleSizes(imageFile, new List<int>() { 800, 400, 200, 100 }, true, timeStamp);
+                }
+                catch
+                {
+                    ModelState.AddModelError("ImageUrl", "Failure saving image. Please try again.");
+                    return View(product);
+                }
+
+                // add new model
                 db.Entry(product).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -113,6 +151,10 @@ namespace ShotgunAdapters.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Product product = await db.Products.FindAsync(id);
+
+            // remove image files used by product
+            imageManager.DeleteImageWithMultipleSizes(product.ImageUrl);
+
             db.Products.Remove(product);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

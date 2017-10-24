@@ -244,6 +244,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Site\ImagePreview.js" />
     <Content Include="Scripts\Site\paypal.js" />
     <Content Include="Scripts\Site\ShoppingCart.js" />
     <Content Include="Web.config" />
@@ -341,6 +342,10 @@
     <ProjectReference Include="..\..\_Reusables\C#\ShoppingCart\ShoppingCart\ShoppingCart.csproj">
       <Project>{db2b6bdc-fae9-4263-8b08-94fbee9a3850}</Project>
       <Name>ShoppingCart</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\_Reusables\C#\WebFiles\WebFiles\WebFiles.csproj">
+      <Project>{5612c6e4-f55c-4120-b33d-bcfcc2bda4bd}</Project>
+      <Name>WebFiles</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
