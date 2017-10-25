@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Web;
 using Cstieg.WebFiles.Controllers;
 using Cstieg.ControllerHelper;
+using System;
 
 namespace ShotgunAdapters.Controllers
 {
@@ -143,7 +144,7 @@ namespace ShotgunAdapters.Controllers
 
             if (!ModelState.IsValid)
             {
-                return this.JError(400, "Error saving image");
+                return this.JError(400, "Error saving image - ModelState not valid");
             }
 
             // Save image to disk and store filepath in model
@@ -167,9 +168,9 @@ namespace ShotgunAdapters.Controllers
                     }
                 };
             }
-            catch
+            catch (Exception e)
             {
-                return this.JError(400, "Error saving image");
+                return this.JError(400, "Error saving image: " + e.Message);
             }
         }
 
