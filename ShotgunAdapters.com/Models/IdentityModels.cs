@@ -37,7 +37,7 @@ namespace ShotgunAdapters.Models
 
             modelBuilder.Entity<Caliber>().ToTable("Calibers")
                 .Property(c => c.Diameter).HasPrecision(18, 3);
-            modelBuilder.Entity<Cstieg.Image.WebImage>().ToTable("WebImages");
+            modelBuilder.Entity<WebImage>().ToTable("WebImages");
             modelBuilder.Entity<Product>().ToTable("Products");
             modelBuilder.Entity<Cstieg.ShoppingCart.Order>().ToTable("Orders");
             modelBuilder.Entity<Cstieg.ShoppingCart.OrderDetail>().ToTable("OrderDetails");
@@ -47,7 +47,7 @@ namespace ShotgunAdapters.Models
 
 
         public DbSet<Caliber> Calibers { get; set; }
-        public DbSet<Cstieg.Image.WebImage> WebImages { get; set; }
+        public DbSet<WebImage> WebImages { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Cstieg.ShoppingCart.OrderDetail> OrderDetails { get; set; }
         public DbSet<Cstieg.ShoppingCart.Customer> Customers { get; set; }

@@ -1,12 +1,12 @@
-﻿using Cstieg.ShoppingCart;
+﻿using Cstieg.Image;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ShotgunAdapters.com.Models
+namespace ShotgunAdapters.Models
 {
-    public class WebImage : Cstieg.Image.WebImageBase
+    public class WebImage : WebImageBase
     {
         [ForeignKey("Product")]
         public int ProductId { get; set; }
-        public virtual Product Product { get; set; } 
+        public Product Product { get; set; }
     }
 }

@@ -60,29 +60,44 @@
             </div>
         </div>
 
+
+
         <div class="form-group">
-            @Html.LabelFor(model => model.ImageUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.WebImages, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <!-- Image preview -->
-                @if (ViewBag.Title == "Edit")
+                @if (Model.WebImages != null)
                 {
-                    @Html.HiddenFor(model => model.ImageUrl)
-                    <img id="upload-image-preview" src="@Html.DisplayFor(model => model.ImageUrl)" />
+                    foreach (var webImage in Model.WebImages)
+                    {   
+                        <picture id="image-@webImage.Id">
+                            <img src="@webImage.ImageUrl" />
+                            <p>@webImage.Caption</p>
+                            <button onclick="imageDelete(@Model.Id, @webImage.Id);">Delete Image</button>
+                        </picture>
+                    }
                 }
-                else
-                {
-                    <img id="upload-image-preview" />
-                }
-                <label for="imageFile" class="btn btn-default">Select new image</label>
-                <input id="imageFile" type="file" name="imageFile" class="hidden" onchange="imageUploadPreview('#upload-image-preview')" />
-                <p>
-                    Please keep in mind the following guidelines:
-                </p>
-                <ul>
-                    <li>Optimally, filenames should be descriptive -- 12gaugeto20gauge.jpg</li>
-                    <li>Files will be automatically resized down as necessary; file sizes of 1MB to 5MB are optimal.</li>
-                </ul>
-                @Html.ValidationMessageFor(model => model.ImageUrl, "", new { @class = "text-danger" })
+
+
+                <div class="form-horizontal">
+                    <!-- Image preview -->
+                    <div id="image-preview-template" class="hidden">
+                        <img class="upload-image-preview" />
+                        <button class="save-image-hidden" onclick="imageUploadSave">Save Image</button>
+                    </div>
+                    <div id="image-preview-container"></div>
+
+                    <label for="imageFile" class="btn btn-default">Choose image file to add</label>
+                    <input id="imageFile" type="file" name="imageFile" class="hidden" onchange="imageUpload(@Model.Id, '#image-preview-container', '#image-preview-template')" />
+                </div>
+                <div id="upload-instructions" class="col-md-12">
+                    <p>
+                        Please keep in mind the following guidelines:
+                    </p>
+                    <ul>
+                        <li>Optimally, filenames should be descriptive -- 12gaugeto20gauge.jpg</li>
+                        <li>Files will be automatically resized down as necessary; file sizes of 1MB to 5MB are optimal.</li>
+                    </ul>
+                </div>
             </div>
         </div>
 

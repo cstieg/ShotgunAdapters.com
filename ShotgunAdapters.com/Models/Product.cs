@@ -20,8 +20,9 @@ namespace ShotgunAdapters.Models
         [StringLength(2000)]
         public string ProductInfo { get; set; }
 
+        [Display(Name = "Product Images")]
         [InverseProperty("Product")]
-        public IEnumerable<WebImage> WebImages { get; set; }
+        public virtual ICollection<WebImage> WebImages { get; set; }
     }
 
 }

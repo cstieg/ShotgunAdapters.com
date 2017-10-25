@@ -7,6 +7,7 @@ using Cstieg.WebFiles;
 using System.Collections.Generic;
 using System.Web;
 using Cstieg.WebFiles.Controllers;
+using Cstieg.ControllerHelper;
 
 namespace ShotgunAdapters.Controllers
 {
@@ -58,8 +59,8 @@ namespace ShotgunAdapters.Controllers
                 try
                 {
                     string timeStamp = FileManager.GetTimeStamp();
-                    product.ImageUrl = imageManager.SaveFile(imageFile, 200, true, timeStamp);
-                    product.ImageSrcSet = imageManager.SaveImageMultipleSizes(imageFile, new List<int>() { 800, 400, 200, 100 }, true, timeStamp);
+                    product.ImageUrl = await imageManager.SaveFile(imageFile, 200, true, timeStamp);
+                    product.ImageSrcSet = await imageManager.SaveImageMultipleSizes(imageFile, new List<int>() { 800, 400, 200, 100 }, true, timeStamp);
                 }
                 catch
                 {
@@ -92,6 +93,7 @@ namespace ShotgunAdapters.Controllers
             }
             ViewBag.AmmunitionCaliberId = new SelectList(db.Calibers, "Id", "Name", product.AmmunitionCaliberId);
             ViewBag.GunCaliberId = new SelectList(db.Calibers, "Id", "Name", product.GunCaliberId);
+            product.WebImages = product.WebImages ?? new List<WebImage>();
             return View(product);
         }
 
@@ -103,7 +105,7 @@ namespace ShotgunAdapters.Controllers
         public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description,Price,Shipping,ImageUrl,DisplayOnFrontPage,DoNotDisplay,GunCaliberId,AmmunitionCaliberId,ProductInfo")] Product product)
         {
             // Check file is exists and is valid image
-            HttpPostedFileBase imageFile = _ModelControllersHelper.GetImageFile(ModelState, Request, "");
+            HttpPostedFileBase imageFile = _ModelControllersHelper.GetImageFile(ModelState, Request);
 
             if (ModelState.IsValid)
             {
@@ -111,8 +113,8 @@ namespace ShotgunAdapters.Controllers
                 try
                 {
                     string timeStamp = FileManager.GetTimeStamp();
-                    product.ImageUrl = imageManager.SaveFile(imageFile, 200, true, timeStamp);
-                    product.ImageSrcSet = imageManager.SaveImageMultipleSizes(imageFile, new List<int>() { 800, 400, 200, 100 }, true, timeStamp);
+                    product.ImageUrl = await imageManager.SaveFile(imageFile, 200, true, timeStamp);
+                    product.ImageSrcSet = await imageManager.SaveImageMultipleSizes(imageFile, new List<int>() { 800, 400, 200, 100 }, true, timeStamp);
                 }
                 catch
                 {
@@ -159,6 +161,64 @@ namespace ShotgunAdapters.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+
+        public async Task<JsonResult> AddImage(int id)
+        {
+            Product product = await db.Products.FindAsync(id);
+            if (product == null)
+            {
+                return this.JError(404, "Can't find product " + id.ToString());
+            }
+
+            // Check file is exists and is valid image
+            HttpPostedFileBase imageFile = _ModelControllersHelper.GetImageFile(ModelState, Request, "", "file");
+
+            if (ModelState.IsValid)
+            {
+                // Save image to disk and store filepath in model
+                try
+                {
+                    string timeStamp = FileManager.GetTimeStamp();
+                    WebImage image = new WebImage
+                    {
+                        ProductId = product.Id,
+                        ImageUrl = await imageManager.SaveFile(imageFile, 200, true, timeStamp),
+                        ImageSrcSet = await imageManager.SaveImageMultipleSizes(imageFile, new List<int>() { 800, 400, 200, 100 }, true, timeStamp)
+                    };
+                    db.WebImages.Add(image);
+                    await db.SaveChangesAsync();
+                }
+                catch
+                {
+                    return this.JError(400, "Error saving image");
+                }
+            }
+            return new JsonResult { Data = new { success = "True" } };
+        }
+
+        public async Task<JsonResult> DeleteImage(int id)
+        {
+            Product product = await db.Products.FindAsync(id);
+            if (product == null)
+            {
+                return this.JError(404, "Can't find product " + id.ToString());
+            }
+
+            int imageId = int.Parse(Request.Params.Get("imageId"));
+            WebImage image = await db.WebImages.FindAsync(imageId);
+            if (image == null)
+            {
+                return this.JError(404, "Can't find image " + imageId.ToString());
+            }
+
+            // remove image files used by product
+            imageManager.DeleteImageWithMultipleSizes(image.ImageUrl);
+
+            db.WebImages.Remove(image);
+            await db.SaveChangesAsync();
+            return this.JOk();
+        }
+
 
         protected override void Dispose(bool disposing)
         {
