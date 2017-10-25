@@ -305,7 +305,6 @@
     <Content Include="Scripts\Site\ImagePreview.js" />
     <Content Include="Scripts\Site\paypal.js" />
     <Content Include="Scripts\Site\ShoppingCart.js" />
-    <Content Include="Scripts\Site\UploadImages.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -368,7 +367,6 @@
     <Content Include="Views\WebImages\Details.cshtml" />
     <Content Include="Views\WebImages\Edit.cshtml" />
     <Content Include="Views\WebImages\Index.cshtml" />
-    <Content Include="Views\Shared\_WebImagePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -61,13 +61,13 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.WebImages, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div id="product-images">
+            <div class="col-md-10 container">
+                <div id="product-images" class="row">
                     @if (Model.WebImages != null)
                     {
                         foreach (var webImage in Model.WebImages)
                         {
-                            <picture id="image-@webImage.Id">
+                            <picture id="image-@webImage.Id" class="col-md-4 col-sm-6 product-image">
                                 <img src="@webImage.ImageUrl" />
                                 <p>@webImage.Caption</p>
                                 <button onclick="imageDelete(@Model.Id, @webImage.Id);return false;">
@@ -77,9 +77,11 @@
                         }
                     }
                 </div>
+                <div class="clearfix"></div>
+                <hr />
                 <div class="form-horizontal">
                     <label for="imageFile" class="btn btn-default">Choose image file to add</label>
-                    <input id="imageFile" type="file" name="imageFile" class="hidden" onchange="imageUpload(@Model.Id, '#product-images')" />
+                    <input id="imageFile" type="file" multiple name="imageFile" class="hidden" onchange="imageUpload(@Model.Id, '#product-images')" />
                 </div>
                 <div id="upload-instructions" class="col-md-12">
                     <p>
