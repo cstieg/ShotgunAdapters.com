@@ -4,7 +4,17 @@
          onmouseover="$(this).addClass('selected');"
          onmouseout="$(this).removeClass('selected');">
     <div class="image-wrapper" onclick="buyNow(@Model.Id)">
-        <img class="product-image" src="@Model.ImageUrl" srcset="@Model.ImageSrcSet" alt="@Model.Name image" />
+        @if (Model.WebImages != null && Model.WebImages.Count() > 0)
+        {
+            <img class="product-image" 
+                 src="@Model.WebImages.First().ImageUrl" 
+                 srcset="@Model.WebImages.First().ImageSrcSet" 
+                 alt="@Model.Name image" />
+        }
+        else
+        {
+            <img class="product-image" src="~/Content/images/ImageUnavailable.png" alt="@Model.Name image" />
+        }
     </div>
     <h4 class="product-name">@Model.Name</h4>
     <p class="product-description">@Model.Description</p>
