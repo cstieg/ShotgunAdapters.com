@@ -48,26 +48,10 @@ namespace ShotgunAdapters.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Description,Price,Shipping,ImageUrl,DisplayOnFrontPage,DoNotDisplay,GunCaliberId,AmmunitionCaliberId,ProductInfo")] Product product)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Description,Price,Shipping,DisplayOnFrontPage,DoNotDisplay,GunCaliberId,AmmunitionCaliberId,ProductInfo")] Product product)
         {
-            // Check file is exists and is valid image
-            HttpPostedFileBase imageFile = _ModelControllersHelper.GetImageFile(ModelState, Request, "");
-
             if (ModelState.IsValid)
             {
-                // Save image to disk and store filepath in model
-                try
-                {
-                    string timeStamp = FileManager.GetTimeStamp();
-                    product.ImageUrl = await imageManager.SaveFile(imageFile, 200, true, timeStamp);
-                    product.ImageSrcSet = await imageManager.SaveImageMultipleSizes(imageFile, new List<int>() { 800, 400, 200, 100 }, true, timeStamp);
-                }
-                catch
-                {
-                    ModelState.AddModelError("ImageUrl", "Failure saving image. Please try again.");
-                    return View(product);
-                }
-
                 // add new model
                 db.Products.Add(product);
                 await db.SaveChangesAsync();
@@ -102,26 +86,10 @@ namespace ShotgunAdapters.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description,Price,Shipping,ImageUrl,DisplayOnFrontPage,DoNotDisplay,GunCaliberId,AmmunitionCaliberId,ProductInfo")] Product product)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description,Price,Shipping,DisplayOnFrontPage,DoNotDisplay,GunCaliberId,AmmunitionCaliberId,ProductInfo")] Product product)
         {
-            // Check file is exists and is valid image
-            HttpPostedFileBase imageFile = _ModelControllersHelper.GetImageFile(ModelState, Request);
-
             if (ModelState.IsValid)
             {
-                // Save image to disk and store filepath in model
-                try
-                {
-                    string timeStamp = FileManager.GetTimeStamp();
-                    product.ImageUrl = await imageManager.SaveFile(imageFile, 200, true, timeStamp);
-                    product.ImageSrcSet = await imageManager.SaveImageMultipleSizes(imageFile, new List<int>() { 800, 400, 200, 100 }, true, timeStamp);
-                }
-                catch
-                {
-                    ModelState.AddModelError("ImageUrl", "Failure saving image. Please try again.");
-                    return View(product);
-                }
-
                 // add new model
                 db.Entry(product).State = EntityState.Modified;
                 await db.SaveChangesAsync();
@@ -173,27 +141,36 @@ namespace ShotgunAdapters.Controllers
             // Check file is exists and is valid image
             HttpPostedFileBase imageFile = _ModelControllersHelper.GetImageFile(ModelState, Request, "", "file");
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                // Save image to disk and store filepath in model
-                try
-                {
-                    string timeStamp = FileManager.GetTimeStamp();
-                    WebImage image = new WebImage
-                    {
-                        ProductId = product.Id,
-                        ImageUrl = await imageManager.SaveFile(imageFile, 200, true, timeStamp),
-                        ImageSrcSet = await imageManager.SaveImageMultipleSizes(imageFile, new List<int>() { 800, 400, 200, 100 }, true, timeStamp)
-                    };
-                    db.WebImages.Add(image);
-                    await db.SaveChangesAsync();
-                }
-                catch
-                {
-                    return this.JError(400, "Error saving image");
-                }
+                return this.JError(400, "Error saving image");
             }
-            return new JsonResult { Data = new { success = "True" } };
+
+            // Save image to disk and store filepath in model
+            try
+            {
+                string timeStamp = FileManager.GetTimeStamp();
+                WebImage image = new WebImage
+                {
+                    ProductId = product.Id,
+                    ImageUrl = await imageManager.SaveFile(imageFile, 200, timeStamp),
+                    ImageSrcSet = await imageManager.SaveImageMultipleSizes(imageFile, new List<int>() { 800, 400, 200, 100 }, timeStamp)
+                };
+                db.WebImages.Add(image);
+                await db.SaveChangesAsync();
+                return new JsonResult
+                {
+                    Data = new
+                    {
+                        success = "True",
+                        imageId = image.Id
+                    }
+                };
+            }
+            catch
+            {
+                return this.JError(400, "Error saving image");
+            }
         }
 
         public async Task<JsonResult> DeleteImage(int id)
@@ -216,7 +193,14 @@ namespace ShotgunAdapters.Controllers
 
             db.WebImages.Remove(image);
             await db.SaveChangesAsync();
-            return this.JOk();
+            return new JsonResult
+            {
+                Data = new
+                {
+                    success = "True",
+                    imageId = image.Id
+                }
+            };
         }
 
 

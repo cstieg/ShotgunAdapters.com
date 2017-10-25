@@ -115,41 +115,6 @@ namespace ShotgunAdapters.Controllers
             return RedirectToAction("Index");
         }
 
-
-        public async Task<JsonResult> AddJson(int id)
-        {
-            Product product = await db.Products.FindAsync(id);
-            if (product == null)
-            {
-                return this.JError(404, "Can't find product " + id.ToString());
-            }
-
-            // Check file is exists and is valid image
-            HttpPostedFileBase imageFile = _ModelControllersHelper.GetImageFile(ModelState, Request);
-
-            if (ModelState.IsValid)
-            {
-                // Save image to disk and store filepath in model
-                try
-                {
-                    string timeStamp = FileManager.GetTimeStamp();
-                    product.ImageUrl = await imageManager.SaveFile(imageFile, 200, true, timeStamp);
-                    product.ImageSrcSet = await imageManager.SaveImageMultipleSizes(imageFile, new List<int>() { 800, 400, 200, 100 }, true, timeStamp);
-                }
-                catch
-                {
-                    return this.JError(400, "Error saving image");
-                }
-
-                // add new model
-                db.Entry(product).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-
-            }
-            return new JsonResult { Data = new { success = "True" } };
-        }
-
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

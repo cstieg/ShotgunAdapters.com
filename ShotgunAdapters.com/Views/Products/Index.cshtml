@@ -56,7 +56,10 @@
             @Html.DisplayFor(modelItem => item.Shipping)
         </td>
         <td>
-            <img src="@item.ImageUrl" />
+            @if (item.WebImages != null && item.WebImages.Count > 0)
+            {
+                <img src="@item.WebImages.First().ImageUrl" />
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DisplayOnFrontPage)

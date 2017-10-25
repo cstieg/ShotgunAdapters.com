@@ -1,8 +1,20 @@
 ﻿/* ****************************** Image Upload Preview ***************************************** */
-function imageUpload(productId, containerId, templateId) {
+function imageUploadPreview(targetId) {
     var e = window.event;
-    var $container = $(containerId);
-    var $template = $(templateId);
+    for (var i = 0; i < e.srcElement.files.length; i++) {
+        var file = e.srcElement.files[i];
+        var $targetImg = $(targetId);
+        var reader = new FileReader();
+        reader.onloadend = function () {
+            $targetImg.attr("src", reader.result);
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+function imageUpload(productId, container) {
+    var e = window.event;
+    var $container = $(container);
 
     for (var i = 0; i < e.srcElement.files.length; i++) {
         var file = e.srcElement.files[i];
@@ -20,7 +32,16 @@ function imageUpload(productId, containerId, templateId) {
                 processData: false, // important
                 contentType: false, // important
                 success: function (response) {
-                    debugger;
+                    var $newPicture = $(`
+                            <picture id="image-${response.imageId}">
+                                <img src="${reader.result}" />
+                                <button onclick="imageDelete(${productId}, ${response.imageId});return false;">
+                                    Delete Image
+                                </button>
+                            </picture>
+                    `);
+
+                    $container.append($newPicture);
                 },
                 error: function (response) {
                     debugger;
@@ -33,7 +54,15 @@ function imageUpload(productId, containerId, templateId) {
 }
 
 function imageDelete(productId, imageId) {
-    $.post('/Products/DeleteImage/' + productId, { imageId: imageId }, function (response) {
-        debugger;
+    $.ajax({
+        type: 'POST',
+        url: '/Products/DeleteImage/' + productId,
+        data: { imageId: imageId },
+        success: function (response) {
+            $('#image-' + imageId).remove();
+        },
+        error: function (response) {
+            debugger;
+        }
     });
 }
