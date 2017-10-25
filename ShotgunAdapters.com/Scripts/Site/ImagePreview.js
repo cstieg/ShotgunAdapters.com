@@ -15,42 +15,41 @@ function imageUploadPreview(targetId) {
 function imageUpload(productId, container) {
     var e = window.event;
     var $container = $(container);
-
     for (var i = 0; i < e.srcElement.files.length; i++) {
         var file = e.srcElement.files[i];
-        var reader = new FileReader();
-        reader.onloadend = function () {
-            var data = {
-                file: file
-            };
-            var myFormData = new FormData();
-            myFormData.append('file', file);
-            $.ajax({
-                type: 'POST',
-                url: '/Products/AddImage/' + productId,
-                data: myFormData,
-                processData: false, // important
-                contentType: false, // important
-                success: function (response) {
-                    var $newPicture = $(`
-                            <picture id="image-${response.imageId}">
+        imageUploadSingle(file, productId, $container);
+    }
+}
+
+function imageUploadSingle(file, productId, $container) {
+    var reader = new FileReader();
+    reader.onloadend = function () {
+        var myFormData = new FormData();
+        myFormData.append('file', file);
+        $.ajax({
+            type: 'POST',
+            url: '/Products/AddImage/' + productId,
+            data: myFormData,
+            processData: false, // important
+            contentType: false, // important
+            success: function (response) {
+                var $newPicture = $(`
+                            <picture id="image-${response.imageId}" class="col-md-4 col-sm-6 product-image">
                                 <img src="${reader.result}" />
                                 <button onclick="imageDelete(${productId}, ${response.imageId});return false;">
                                     Delete Image
                                 </button>
                             </picture>
                     `);
+                $container.append($newPicture);
+            },
+            error: function (response) {
+                debugger;
+            }
+        });
 
-                    $container.append($newPicture);
-                },
-                error: function (response) {
-                    debugger;
-                }
-            }); 
-
-        };
-        reader.readAsDataURL(file);
-    }
+    };
+    reader.readAsDataURL(file);
 }
 
 function imageDelete(productId, imageId) {
