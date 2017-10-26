@@ -1,13 +1,38 @@
-﻿body {
-    padding-top: 50px;
+﻿/* ***************** COMMON ***************************************** */
+
+body {
+    /* Padding for height of navbar header */
+    padding-top: 60px;
     padding-bottom: 20px;
+    background-image: url("");
 }
 
-/* Set padding to keep content from hitting the edges */
 .body-content {
+    background-color: #f8fff8; /* offwhite */
+    color: none;
     padding-left: 15px;
     padding-right: 15px;
+    font-size: medium;
 }
+
+main {
+    min-height: 75vh;
+    display: block;
+}
+
+footer {
+    font-size: small;
+    bottom: 0;
+}
+
+hr {
+    margin: 10px 0;
+}
+
+.larger-text {
+    font-size: larger;
+}
+
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -17,11 +42,228 @@
 }
 
 
+/* get rid of this */
+.model-views-container {
+    width: 100%;
+    margin: 10px;
+    padding: 10px;
+    background-color: #f8fff8; /* offwhite */
+    box-sizing: border-box;
+}
+
+/* do we need this? */
+.row {
+    height: auto;
+    margin: 10px 4px;
+}
+
+.image-square-rounded {
+    width: 100%;
+    height: 300px;
+    max-width: 300px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 14px;
+}
+
+h2 {
+    background-color: #225f22; /* dark green */
+    color: white;
+    padding: 4px;
+    border: 2px outset #b2ff76;
+    border-radius: 6px;
+    margin: 6px 2px;
+}
+
 textarea {
     width: 100%;
     height: 10em;
 }
 
+/* ****************************** Navbar ****************************************** */
+/* adjust these */
+
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav li a {
+    color: #b2ff76;
+}
+
+.logo {
+    width: 204px;
+    height: 72px;
+    margin: 3px;
+}
+
+.navbar {
+    margin: 0;
+}
+
+.navbar > .container {
+    width: 100%;
+    margin: 4px;
+    padding: 4px;
+    max-width: none;
+}
+
+@media screen and (min-width: 1000px) {
+    .navbar-collapse,
+    .navbar > .container {
+        width: 950px;
+        margin: auto;
+    }
+}
+
+
+.navbar-header {
+    max-width: 100%;
+}
+
+.container > .navbar-header {
+    margin: 0;
+}
+
+.mynav {
+    font-weight: bold;
+    font-size: medium;
+    margin: 12px 4px;
+}
+
+    /* Menu items */
+    .mynav > li {
+        background-color: #225f22; /* dark green */
+        border-radius: 14px;
+        margin: 6px;
+    }
+
+.navbar-nav li a {
+    padding: 8px;
+}
+
+/* Shopping Cart Icon Fix */
+.glyphicon {
+    position: inherit;
+    margin-right: 8px;
+}
+
+/* ****************************** Bottom Navbar ******************* */
+
+
+#navbar-bottom.navbar {
+    background-color: #f8fff8; /* offwhite */
+    border: none;
+    min-height: 0;
+}
+
+#navbar-bottom .container {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+#navbar-bottom .mynav {
+    margin: 0;
+    padding: 0;
+    font-size: small;
+    width: 100%;
+}
+
+#navbar-bottom .mynav > li {
+    background-color: #f8fff8; /* offwhite */
+    margin: auto;
+    padding: 0;
+    /* 100% divided by number of items */
+    width: 50%;
+}
+
+#navbar-bottom .navbar-nav li a {
+    padding: 2px;
+    margin: 0 auto;
+    text-align: center;
+    border: thin solid transparent;
+    color: #225f22; /* dark green */
+}
+
+#navbar-bottom .navbar-nav li a:hover {
+    font-weight: 800;
+}
+
+
+/* **************************** Product display *********************************** */
+.product-item {
+    height: auto;
+    margin-bottom: 20px;
+    padding: 5px;
+    border-radius: 14px;
+}
+
+.product-item * {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.product-image {
+    width: 200px;
+    height: 220px;
+    margin: auto;
+}
+
 .product-image img {
     max-width: 200px;
+}
+
+.product-image:hover {
+    border: inset green 4px;
+    border-radius: 8px;
+}
+
+.product-item .buy-now {
+    background-color: red;
+    color: white;
+    font-size: larger;
+    min-width: 100px;
+    min-height: 20px;
+    border: gray 2px outset;
+}
+
+.product-item .add-to-shopping-cart {
+    margin: 4px;
+}
+
+.product-item button:hover {
+    background-color: maroon;
+    color: white;
+}
+
+.product-item.selected .buy-now {
+    border: black 2px solid;
+    border-radius: 6px;
+}
+
+.image-wrapper {
+    width: 100%;
+}
+
+/* ************************* Order detail page *************** */
+.item-detail-header *,
+.item-detail-total * {
+    font-weight: bold;
+}
+
+
+/* ******************************** Shopping Cart Page ******************************** */
+#no-paypal {
+    width: 250px;
+    border: ridge thick green;
+    border-radius: 14px;
+    padding: 6px;
+}
+
+#no-paypal h4 {
+    margin: auto;
+}
+
+/* ********************* Overrides ******************************* */
+.centered {
+    margin-left: auto;
+    margin-right: auto;
 }
