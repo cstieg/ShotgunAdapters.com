@@ -367,6 +367,7 @@
     <Content Include="Views\WebImages\Details.cshtml" />
     <Content Include="Views\WebImages\Edit.cshtml" />
     <Content Include="Views\WebImages\Index.cshtml" />
+    <Content Include="Views\Home\Product.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

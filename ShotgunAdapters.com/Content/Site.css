@@ -243,6 +243,13 @@ textarea {
     width: 100%;
 }
 
+/* ************************* Product page ******************** */
+#product-page-images img {
+    width: 100%;
+}
+
+
+
 /* ************************* Order detail page *************** */
 .item-detail-header *,
 .item-detail-total * {
