@@ -1,4 +1,5 @@
 ﻿using Cstieg.Image;
+using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShotgunAdapters.Models
@@ -7,6 +8,7 @@ namespace ShotgunAdapters.Models
     {
         [ForeignKey("Product")]
         public int ProductId { get; set; }
-        public Product Product { get; set; }
+        [JsonIgnore]
+        public virtual Product Product { get; set; }
     }
 }
