@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Home Page";
 }
+<h1>Shotgun Adapters</h1>
 
 <div id="myCarousel" data-interval="5000" data-ride="carousel" class="carousel slide">
     <!-- Carousel indicators -->
@@ -33,7 +34,7 @@
        data-slide="next">&rsaquo;</a>
 </div>
 
-<section id="featured-products">
+<section id="featured-products" class="row">
     <h2>Featured Products</h2>
     @foreach (var product in Model)
     {
