@@ -45,7 +45,14 @@ function buyNow(id) {
         success: function (returnval) {
             window.location = "/shoppingCart";
         },
-        error: shoppingCartPostError
+        error: function (returnval) {
+            if (returnval.status = 403) {
+                window.location = "/shoppingCart";
+            }
+            else {
+                shoppingCartPostError();
+            }
+        }
     });
 }
 

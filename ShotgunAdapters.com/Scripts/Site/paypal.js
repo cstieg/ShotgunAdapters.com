@@ -11,7 +11,7 @@ var clientInfo = {
     mode: document.getElementById('paypalMode').innerText,
     paypalLoginReturnId: document.getElementById('paypalLoginReturnId').innerText
 };
-debugger;
+
 paypal.Button.render({
 
     env: clientInfo.mode,
