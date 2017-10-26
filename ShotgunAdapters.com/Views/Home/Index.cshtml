@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<ShotgunAdapters.Models.Product>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -30,6 +32,14 @@
     <a class="carousel-control right" href="#myCarousel"
        data-slide="next">&rsaquo;</a>
 </div>
+
+<section id="featured-products">
+    <h2>Featured Products</h2>
+    @foreach (var product in Model)
+    {
+        @Html.Partial("_ProductPartial", product)
+    }
+</section>
 
 <div class="row">
 
