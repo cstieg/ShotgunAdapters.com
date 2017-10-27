@@ -223,12 +223,17 @@
     <Compile Include="Migrations\201710251601036_WebImageForeignKey.Designer.cs">
       <DependentUpon>201710251601036_WebImageForeignKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710271925109_reviews.cs" />
+    <Compile Include="Migrations\201710271925109_reviews.Designer.cs">
+      <DependentUpon>201710271925109_reviews.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Caliber.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Review.cs" />
     <Compile Include="Models\WebImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -426,6 +431,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710251601036_WebImageForeignKey.resx">
       <DependentUpon>201710251601036_WebImageForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710271925109_reviews.resx">
+      <DependentUpon>201710271925109_reviews.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
