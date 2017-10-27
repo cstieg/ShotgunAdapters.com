@@ -1,7 +1,22 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿@model IEnumerable<ShotgunAdapters.Models.Review>
 
-<p>Use this area to provide additional information.</p>
+@{
+    ViewBag.Title = "Reviews";
+}
+<h2>@ViewBag.Title</h2>
+
+<div id="product-reviews" class="container">
+    @foreach(var review in Model)
+    {
+        <article class="product-review">
+            <div class="product-review-header">
+                <span class="product-review-date">@review.Date.Value.ToShortDateString()</span>
+                <span class="product-review-person">@review.GetReviewer()</span>
+            </div>
+            <div class="product-review-content">
+                @review.Text
+            </div>
+
+        </article>
+    }
+</div>

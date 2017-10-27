@@ -20,5 +20,20 @@ namespace ShotgunAdapters.Models
 
         [StringLength(2000)]
         public string Text { get; set; }
+        
+        public string GetReviewer()
+        {
+            string reviewerText = "";
+            if (Person != null & Person != "")
+            {
+                reviewerText += "By " + Person + " ";
+            }
+            if (Location != null & Location != "")
+            {
+                reviewerText += "(" + Location + ")";
+            }
+
+            return reviewerText;
+        }
     }
 }
