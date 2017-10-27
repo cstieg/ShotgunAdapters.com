@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace ShotgunAdapters.Models
 {
@@ -19,6 +20,7 @@ namespace ShotgunAdapters.Models
         public string Location { get; set; }
 
         [StringLength(2000)]
+        [AllowHtml]
         public string Text { get; set; }
         
         public string GetReviewer()
