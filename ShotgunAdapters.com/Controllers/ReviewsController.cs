@@ -40,7 +40,7 @@ namespace ShotgunAdapters.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Text,Date,Location")] Review review)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Person,Date,Location,Text")] Review review)
         {
             if (ModelState.IsValid)
             {
@@ -72,7 +72,7 @@ namespace ShotgunAdapters.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Text,Date,Location")] Review review)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Person,Date,Location,Text")] Review review)
         {
             if (ModelState.IsValid)
             {

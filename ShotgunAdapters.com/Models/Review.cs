@@ -9,13 +9,16 @@ namespace ShotgunAdapters.Models
         public int Id { get; set; }
 
         [StringLength(30)]
-        public string Title { get; set; }
+        public string Title { get; set; }   
 
-        [StringLength(2000)]
-        public string Text { get; set; }
+        [StringLength(30)]
+        public string Person { get; set; }
 
         public DateTime? Date { get; set; }
 
         public string Location { get; set; }
+
+        [StringLength(2000)]
+        public string Text { get; set; }
     }
 }
