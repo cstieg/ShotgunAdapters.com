@@ -1,5 +1,6 @@
 ﻿using ShotgunAdapters.Models;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -60,7 +61,17 @@ namespace ShotgunAdapters.Controllers
             return View();
         }
 
-
+        /// <summary>
+        /// Displays list of links to model edit pages
+        /// </summary>
+        public ActionResult Edit()
+        {
+            string modelControllers = ConfigurationManager.AppSettings["modelControllers"];
+            char[] delimiters = { ',' };
+            string[] controllersArray = modelControllers.Split(delimiters);
+            List<string> controllers = new List<string>(controllersArray);
+            return View(controllers);
+        }
 
     }
 }
