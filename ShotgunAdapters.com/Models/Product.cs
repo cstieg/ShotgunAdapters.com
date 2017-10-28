@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Cstieg.Image;
+using System.Web.Mvc;
 
 namespace ShotgunAdapters.Models
 {
@@ -18,6 +18,7 @@ namespace ShotgunAdapters.Models
         public virtual Caliber AmmunitionCaliber { get; set; }
 
         [StringLength(2000)]
+        [AllowHtml]
         public string ProductInfo { get; set; }
 
         [Display(Name = "Product Images")]

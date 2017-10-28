@@ -1,5 +1,8 @@
 ﻿@model ShotgunAdapters.Models.Product
 
+@Scripts.Render("~/bundles/nicedit")
+<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
+
 @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
