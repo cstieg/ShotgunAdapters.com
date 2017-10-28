@@ -6,9 +6,11 @@ using ShotgunAdapters.Models;
 
 namespace ShotgunAdapters.Controllers
 {
+    [RoutePrefix("Edit/Reviews")]
     public class ReviewsController : BaseController
     {
         // GET: Reviews
+        [Route]
         public async Task<ActionResult> Index()
         {
             return View(await db.Reviews.ToListAsync());

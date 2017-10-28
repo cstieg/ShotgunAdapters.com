@@ -12,9 +12,11 @@ using System;
 
 namespace ShotgunAdapters.Controllers
 {
+    [RoutePrefix("Edit/Products")]
     public class ProductsController : BaseController
     {
         // GET: Products
+        [Route]
         public async Task<ActionResult> Index()
         {
             var products = db.Products.Include(p => p.AmmunitionCaliber).Include(p => p.GunCaliber);

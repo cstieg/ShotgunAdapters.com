@@ -7,8 +7,10 @@ using System.Collections.Generic;
 
 namespace ShotgunAdapters.Controllers
 {
+    [RoutePrefix("Edit/Calibers")]
     public class CalibersController : BaseController
     {
+        [Route]
         // GET: Calibers
         public async Task<ActionResult> Index()
         {
