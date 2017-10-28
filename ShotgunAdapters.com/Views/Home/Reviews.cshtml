@@ -9,14 +9,15 @@
     @foreach(var review in Model)
     {
         <article class="product-review">
-            <div class="product-review-header">
-                <span class="product-review-date">@review.Date.Value.ToShortDateString()</span>
-                <span class="product-review-person">@review.GetReviewer()</span>
-            </div>
+            <h3 class="product-review-title">@review.Title</h3>
             <div class="product-review-content">
                 @Html.Raw(review.Text)
             </div>
-
+            <hr />
+            <div class="product-review-footer">
+                <span class="product-review-date">@review.Date.Value.ToShortDateString()</span>
+                <span class="product-review-person">@review.GetReviewer()</span>
+            </div>
         </article>
     }
 </div>

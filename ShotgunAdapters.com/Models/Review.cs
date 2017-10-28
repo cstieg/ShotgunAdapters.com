@@ -28,7 +28,7 @@ namespace ShotgunAdapters.Models
             string reviewerText = "";
             if (Person != null & Person != "")
             {
-                reviewerText += "By " + Person + " ";
+                reviewerText += "by " + Person + " ";
             }
             if (Location != null & Location != "")
             {

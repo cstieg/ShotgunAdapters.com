@@ -269,6 +269,27 @@ textarea {
     margin: auto;
 }
 
+/* ********************************Reviews Page *************************************** */
+.product-review {
+    background-color: dimgray;
+    border: thick yellow outset;
+    border-radius: 14px;
+    color: white;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.product-review > hr {
+    margin-bottom: 0;
+}
+
+.product-review-footer {
+    font-size: small;
+    text-align: right;
+    margin-top: 6px;
+}
+
+
 /* ********************* Overrides ******************************* */
 .centered {
     margin-left: auto;
