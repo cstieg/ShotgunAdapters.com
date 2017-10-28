@@ -31,6 +31,11 @@ namespace ShotgunAdapters.Controllers
             return View(products);
         }
 
+        public async Task<ActionResult> ProductsByCaliber(string caliberName)
+        {
+            return View("Products", await db.Products.Where(p => p.GunCaliber.Name == caliberName).ToListAsync());
+        }
+
         public async Task<ActionResult> Product(int id)
         {
             var product = await db.Products.FindAsync(id);

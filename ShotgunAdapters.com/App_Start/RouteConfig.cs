@@ -1,4 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using ShotgunAdapters.Models;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace ShotgunAdapters
@@ -9,10 +12,19 @@ namespace ShotgunAdapters
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapMvcAttributeRoutes();
+
             routes.MapRoute(
-                name: "Edit",
-                url: "edit",
-                defaults: new { controller = "Home", action = "Edit" }
+                name: "ProductsByCaliber",
+                url: "{*caliberName}",
+                defaults: new { controller = "Home", action = "ProductsByCaliber"},
+                constraints: new { caliberName = new IsCaliberNameConstraint()}
+            );
+
+            routes.MapRoute(
+                name: "Home",
+                url: "{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
@@ -20,6 +32,20 @@ namespace ShotgunAdapters
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+        }
+    }
+
+    class IsCaliberNameConstraint : IRouteConstraint
+    {
+        public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
+        {
+            var db = new ApplicationDbContext();
+            if (values[parameterName] != null)
+            {
+                var caliberName = values[parameterName].ToString();
+                return db.Calibers.Any(c => c.Name.ToLower() == caliberName.ToLower());
+            }
+            return false;
         }
     }
 }
