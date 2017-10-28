@@ -52,7 +52,7 @@ namespace ShotgunAdapters.Controllers
 
         public async Task<ActionResult> Reviews()
         {
-            return View(await db.Reviews.ToListAsync());
+            return View(await db.Reviews.OrderBy(r => r.Date).ToListAsync());
         }
 
         public ActionResult Faq()
