@@ -22,7 +22,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("ShotgunAdapters.com", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <!--
+                @Html.ActionLink("ShotgunAdapters.com", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })                    
+                -->
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -42,8 +44,14 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Reviews", "Reviews", "Home")</li>
                     <li>@Html.ActionLink("FAQ", "FAQ", "Home")</li>
+                    <li>
+                        <a href="/shoppingcart"><span class="glyphicon glyphicon-shopping-cart"></span>Shopping Cart</a>
+                    </li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+                <!--
+                @Html.Partial("_LoginPartial")    
+                -->
+                
             </div>
         </div>
     </div>
@@ -53,7 +61,8 @@
             <hr />
         </main>
         <footer>
-            <p>&copy; @DateTime.Now.Year - ShotgunAdapters.com</p>
+            <span>&copy; @DateTime.Now.Year - ShotgunAdapters.com</span>
+            <span class="pull-right">Website created by <a href="http://www.christopherstieg.com">Christopher Stieg</a></span>
         </footer>
     </div>
 
