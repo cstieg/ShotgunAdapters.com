@@ -14,7 +14,7 @@
                 <span class="product-review-person">@review.GetReviewer()</span>
             </div>
             <div class="product-review-content">
-                @review.Text
+                @Html.Raw(review.Text)
             </div>
 
         </article>

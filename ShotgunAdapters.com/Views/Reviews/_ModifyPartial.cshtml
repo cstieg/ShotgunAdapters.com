@@ -1,5 +1,10 @@
 ﻿@model ShotgunAdapters.Models.Review
 
+
+@Scripts.Render("~/bundles/nicedit")
+<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
+
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
