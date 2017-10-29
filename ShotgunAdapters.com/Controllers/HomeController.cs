@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -77,6 +78,5 @@ namespace ShotgunAdapters.Controllers
             List<string> controllers = new List<string>(controllersArray);
             return View(controllers);
         }
-
     }
 }
