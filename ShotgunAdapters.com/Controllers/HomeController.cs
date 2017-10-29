@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -59,7 +58,7 @@ namespace ShotgunAdapters.Controllers
 
         public async Task<ActionResult> Reviews()
         {
-            return View(await db.Reviews.OrderBy(r => r.Date).ToListAsync());
+            return View(await db.Reviews.OrderByDescending(r => r.Date).ToListAsync());
         }
 
         public ActionResult Faq()
