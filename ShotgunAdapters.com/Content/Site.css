@@ -2,13 +2,20 @@
 
 body {
     /* Padding for height of navbar header */
+    padding-left: 10px;
+    padding-right: 10px;
     padding-top: 60px;
     padding-bottom: 20px;
     background-image: url("");
+    background-color: #f2f2f2; /* offwhite */
+    background: linear-gradient(to right, 
+                                lightgray,
+                                white 10%,
+                                white 90%,
+                                lightgray);
 }
 
 .body-content {
-    background-color: #f8fff8; /* offwhite */
     color: none;
     padding-left: 15px;
     padding-right: 15px;
@@ -27,7 +34,7 @@ footer {
 
 hr {
     margin: 10px 0;
-}
+}   
 
 .larger-text {
     font-size: larger;
@@ -41,38 +48,16 @@ hr {
     white-space: normal;
 }
 
-
-/* get rid of this */
-.model-views-container {
-    width: 100%;
-    margin: 10px;
-    padding: 10px;
-    background-color: #f8fff8; /* offwhite */
-    box-sizing: border-box;
-}
-
-/* do we need this? */
-.row {
-    height: auto;
-    margin: 10px 4px;
-}
-
-.image-square-rounded {
-    width: 100%;
-    height: 300px;
-    max-width: 300px;
-    margin: 0 auto;
-    display: block;
-    border-radius: 14px;
+h1 {
+    font-family: Impact;
 }
 
 h2 {
-    background-color: #225f22; /* dark green */
-    color: white;
+    background-color: silver;
+    color: blue;
     padding: 4px;
-    border: 2px outset #b2ff76;
+    border: 2px outset darkgray;
     border-radius: 6px;
-    margin: 6px 2px;
 }
 
 textarea {
@@ -80,112 +65,85 @@ textarea {
     height: 10em;
 }
 
+
+/* Cancel Bootstrap's margin / padding adjustments, which were causing misalignments */
+.container,
+.container > .navbar-header,
+.container > .navbar-collapse {
+    padding: 0;
+    margin: 0 auto;
+}
+
+.row {
+    margin: 5px auto;
+}
+
 /* ****************************** Navbar ****************************************** */
-/* adjust these */
+.navbar-nav {
+    margin: 0;
+    padding-top: 5px;
+}
+
+.navbar-inverse {
+    background-color: blue;
+    border-color: dodgerblue;
+    background: linear-gradient(lightblue, blue 20%, lightblue);
+}
+
 
 .navbar-inverse .navbar-brand,
 .navbar-inverse .navbar-nav li a {
-    color: #b2ff76;
-}
-
-.logo {
-    width: 204px;
-    height: 72px;
-    margin: 3px;
-}
-
-.navbar {
-    margin: 0;
-}
-
-.navbar > .container {
-    width: 100%;
-    margin: 4px;
-    padding: 4px;
-    max-width: none;
+    color: blue;
 }
 
 @media screen and (min-width: 1000px) {
     .navbar-collapse,
     .navbar > .container {
-        width: 950px;
+        width: 1000px;
         margin: auto;
     }
 }
 
 
-.navbar-header {
-    max-width: 100%;
+/* Menu items */
+.navbar-nav li {
+    background-color: white;
+    border: 3px blue groove;
+    border-radius: 10px;
+    height: 35px;
+    margin: 3px 10px;
 }
 
-.container > .navbar-header {
-    margin: 0;
-}
-
-.mynav {
-    font-weight: bold;
-    font-size: medium;
-    margin: 12px 4px;
-}
-
-    /* Menu items */
-    .mynav > li {
-        background-color: #225f22; /* dark green */
-        border-radius: 14px;
-        margin: 6px;
-    }
 
 .navbar-nav li a {
-    padding: 8px;
+    padding: 5px;
+    font-size: large;
 }
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+    color: black;
+    background-color: aliceblue;
+    border-radius: 10px;
+}
+
+.navbar-inverse .navbar-nav > .open > a, 
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: Highlight;
+    color: black;
+}
+
 
 /* Shopping Cart Icon Fix */
-.glyphicon {
-    position: inherit;
-    margin-right: 8px;
+span.glyphicon {
+    line-height: 0;
+    margin-right: 6px;
 }
 
-/* ****************************** Bottom Navbar ******************* */
-
-
-#navbar-bottom.navbar {
-    background-color: #f8fff8; /* offwhite */
+.dropdown li {
     border: none;
-    min-height: 0;
 }
-
-#navbar-bottom .container {
-    padding-top: 0;
-    margin-top: 0;
-}
-
-#navbar-bottom .mynav {
-    margin: 0;
-    padding: 0;
-    font-size: small;
-    width: 100%;
-}
-
-#navbar-bottom .mynav > li {
-    background-color: #f8fff8; /* offwhite */
-    margin: auto;
-    padding: 0;
-    /* 100% divided by number of items */
-    width: 50%;
-}
-
-#navbar-bottom .navbar-nav li a {
-    padding: 2px;
-    margin: 0 auto;
-    text-align: center;
-    border: thin solid transparent;
-    color: #225f22; /* dark green */
-}
-
-#navbar-bottom .navbar-nav li a:hover {
-    font-weight: 800;
-}
-
 
 /* **************************** Product display *********************************** */
 .product-item {
@@ -205,6 +163,8 @@ textarea {
     width: 200px;
     height: 220px;
     margin: auto;
+    border: inset transparent 4px;
+    border-radius: 8px;
 }
 
 .product-image img {
@@ -216,7 +176,7 @@ textarea {
     border-radius: 8px;
 }
 
-.product-item .buy-now {
+.buy-now {
     background-color: red;
     color: white;
     font-size: larger;
@@ -225,7 +185,7 @@ textarea {
     border: gray 2px outset;
 }
 
-.product-item .add-to-shopping-cart {
+.add-to-shopping-cart {
     margin: 4px;
 }
 
@@ -249,7 +209,6 @@ textarea {
 }
 
 
-
 /* ************************* Order detail page *************** */
 .item-detail-header *,
 .item-detail-total * {
@@ -269,12 +228,17 @@ textarea {
     margin: auto;
 }
 
+/* ********************************Aboute Page **************************************** */
+.video-clip > iframe {
+    max-width: 100%;
+}
+
 /* ********************************Reviews Page *************************************** */
 .product-review {
-    background-color: dimgray;
-    border: thick yellow outset;
+    background-color: aliceblue;
+    border: outset thick blue;
     border-radius: 14px;
-    color: white;
+    color: black;
     margin-bottom: 10px;
     padding: 10px;
 }
@@ -289,9 +253,68 @@ textarea {
     margin-top: 6px;
 }
 
+/* *************************** FAQ ******************************* */
+#faqs {
+    display: flex;
+    flex-wrap: wrap;   
+    margin-left: -25px;
+    margin-right: -5px;
+}
+
+/* Put margins on inner div instead of .faq to avoid causing flexbox to overflow*/
+.faq-inner {
+    margin: 10px;
+    padding: 10px;
+}
+
+.qa-question,
+.qa-answer {
+    min-height: 6em;
+    padding: 6px;
+}
+
+.qa-question {
+    font-size: 14pt;
+    font-weight: bold;
+    vertical-align: middle;
+    border: outset thick blue;
+    border-radius: 14px;
+    background-color: aliceblue;
+}
+
+.qa-answer {
+    padding-top: 4px;
+}
+
+.qa-question::before,
+.qa-answer::before {
+    color: blue;
+    font-size: 40pt;
+    font-weight: normal;
+    font-family: Impact;
+    text-align: center;
+    float: left;
+    width: 1em;
+    height: 1em;
+    padding: 3px;
+    padding-top: 0;
+    margin-top: -10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.qa-question::before {
+    content: 'Q';
+}
+
+.qa-answer::before {
+    content: 'A';
+}
 
 /* ********************* Overrides ******************************* */
 .centered {
     margin-left: auto;
     margin-right: auto;
+    display: block;
 }
