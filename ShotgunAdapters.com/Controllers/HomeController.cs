@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace ShotgunAdapters.Controllers
 {
+    [OutputCache(CacheProfile = "CacheForADay")]
     public class HomeController : BaseController
     {
         public async Task<ActionResult> Index()
