@@ -18,6 +18,7 @@ namespace ShotgunAdapters
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/js").Include(
+                      "~/Scripts/site/site.js",
                       "~/Scripts/site/ShoppingCart.js",
                       "~/Scripts/site/ImagePreview.js",
                       "~/Scripts/site/UploadImages.js"));
