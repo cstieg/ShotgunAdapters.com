@@ -250,6 +250,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\SampleSlide.png" />
+    <Content Include="Content\images\ShotgunAdaptersLogo.png" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -314,6 +315,7 @@
     <Content Include="Scripts\Site\ImagePreview.js" />
     <Content Include="Scripts\Site\paypal.js" />
     <Content Include="Scripts\Site\ShoppingCart.js" />
+    <Content Include="Scripts\Site\site.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
