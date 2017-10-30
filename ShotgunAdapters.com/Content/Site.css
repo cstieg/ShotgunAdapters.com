@@ -2,17 +2,10 @@
 
 body {
     /* Padding for height of navbar header */
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 60px;
-    padding-bottom: 20px;
+    padding: 106px 10px 20px 10px;
     background-image: url("");
     background-color: #f2f2f2; /* offwhite */
-    background: linear-gradient(to right, 
-                                lightgray,
-                                white 10%,
-                                white 90%,
-                                lightgray);
+    background: linear-gradient(to right, lightgray, white 10%, white 90%, lightgray);
 }
 
 .body-content {
@@ -96,14 +89,10 @@ textarea {
     color: blue;
 }
 
-@media screen and (min-width: 1000px) {
-    .navbar-collapse,
-    .navbar > .container {
-        width: 1000px;
-        margin: auto;
-    }
+img#site-logo {
+    height: 86px;
+    width: 354px;
 }
-
 
 /* Menu items */
 .navbar-nav li {
@@ -113,7 +102,6 @@ textarea {
     height: 35px;
     margin: 3px 10px;
 }
-
 
 .navbar-nav li a {
     padding: 5px;
@@ -127,13 +115,16 @@ textarea {
     border-radius: 10px;
 }
 
-.navbar-inverse .navbar-nav > .open > a, 
+.navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
-    background-color: Highlight;
+    background-color: aliceblue;
     color: black;
 }
 
+.dropdown-menu > li > a:hover {
+    background-color: aliceblue;
+}
 
 /* Shopping Cart Icon Fix */
 span.glyphicon {
@@ -143,6 +134,14 @@ span.glyphicon {
 
 .dropdown li {
     border: none;
+}
+
+@media screen and (min-width: 768px) {
+    .navbar-nav {
+        display: flex;
+        flex-wrap: wrap;
+        float: unset;
+    }
 }
 
 /* **************************** Product display *********************************** */
@@ -228,7 +227,7 @@ span.glyphicon {
     margin: auto;
 }
 
-/* ********************************Aboute Page **************************************** */
+/* *********************************About Page **************************************** */
 .video-clip > iframe {
     max-width: 100%;
 }
