@@ -235,6 +235,14 @@
     <Compile Include="Migrations\201710271946350_ReviewsPerson.Designer.cs">
       <DependentUpon>201710271946350_ReviewsPerson.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710302159306_CaliberIndex.cs" />
+    <Compile Include="Migrations\201710302159306_CaliberIndex.Designer.cs">
+      <DependentUpon>201710302159306_CaliberIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710302203345_ReviewDateIndex.cs" />
+    <Compile Include="Migrations\201710302203345_ReviewDateIndex.Designer.cs">
+      <DependentUpon>201710302203345_ReviewDateIndex.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Caliber.cs" />
@@ -449,6 +457,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710271946350_ReviewsPerson.resx">
       <DependentUpon>201710271946350_ReviewsPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710302159306_CaliberIndex.resx">
+      <DependentUpon>201710302159306_CaliberIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710302203345_ReviewDateIndex.resx">
+      <DependentUpon>201710302203345_ReviewDateIndex.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

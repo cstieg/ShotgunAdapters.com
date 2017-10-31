@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Mvc;
 
 namespace ShotgunAdapters.Models
@@ -15,6 +16,7 @@ namespace ShotgunAdapters.Models
         [StringLength(30)]
         public string Person { get; set; }
 
+        [Index]
         public DateTime? Date { get; set; }
 
         public string Location { get; set; }
