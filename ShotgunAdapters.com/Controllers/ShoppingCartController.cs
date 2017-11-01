@@ -27,6 +27,20 @@ namespace ShotgunAdapters.Controllers
         {
             return View();
         }
+
+        /// <summary>
+        /// Gets the number of items in the shopping cart
+        /// </summary>
+        /// <returns>A JSON object containing the number of items in the shopping cart in the field shoppingCartCount</returns>
+        public JsonResult ShoppingCartCount()
+        {
+            ShoppingCart shoppingCart = ShoppingCart.GetFromSession(HttpContext);
+            object returnData = new
+            {
+                shoppingCartCount = shoppingCart.Order.OrderDetails.Count
+            };
+            return Json(returnData, JsonRequestBehavior.AllowGet);
+        }
         
         /// <summary>
         /// Adds a product to the shopping cart

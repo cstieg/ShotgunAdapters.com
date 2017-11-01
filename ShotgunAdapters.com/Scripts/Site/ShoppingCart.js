@@ -26,7 +26,7 @@ function addToShoppingCart(id) {
         data: postData,
         dataType: 'json',
         success: function (returnval) {
-            alert('Success!');
+            incrementShoppingCartBadge();
         },
         error: shoppingCartPostError
     });
@@ -119,6 +119,9 @@ function removeItemInShoppingCart(id) {
         success: function (returnval) {
             var $item = $('#item-' + id)[0];
             $item.remove();
+
+            decrementShoppingCartBadge();
+
             if (itemsInDetailCount() === 0) {
                 location.reload();
             }
@@ -158,5 +161,29 @@ function recalculate() {
     $('.item-detail-total .item-extended-price')[0].innerText = '$' + extendedPriceTotal.toFixed(2);
     $('.item-detail-total .item-shipping')[0].innerText = '$' + shippingTotal.toFixed(2);
     $('.item-detail-total .item-total-price')[0].innerText = '$' + (extendedPriceTotal + shippingTotal).toFixed(2);
+}
+
+
+function itemsInDetailCount() {
+    var $itemDetailLines = $('.item-detail-line');
+    return $itemDetailLines.length;
+}
+
+
+// ****************** Shopping cart badge *******************************************************
+(function getShoppingCartCount() {
+    $.getJSON('/shoppingCart/ShoppingCartCount', function (data) {
+        $('#shoppingCartCount').text(data.shoppingCartCount);
+    });
+})();
+
+function incrementShoppingCartBadge() {
+    var currentCount = parseInt($('#shoppingCartCount').text());
+    $('#shoppingCartCount').text(currentCount + 1);
+}
+
+function decrementShoppingCartBadge() {
+    var currentCount = parseInt($('#shoppingCartCount').text());
+    $('#shoppingCartCount').text(currentCount - 1);
 }
 

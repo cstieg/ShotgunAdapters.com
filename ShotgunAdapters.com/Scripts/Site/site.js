@@ -24,3 +24,9 @@ $('.dropdown-menu').on('mouseout', function () {
         }
     });
 })();
+
+(function getShoppingCartCount() {
+    $.getJSON('/shoppingCart/ShoppingCartCount', function (data) {
+        $('#shoppingCartCount').text(data.shoppingCartCount);
+    });
+})();
