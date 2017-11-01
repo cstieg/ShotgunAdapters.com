@@ -6,7 +6,6 @@ using Cstieg.Geography;
 using Cstieg.ControllerHelper;
 using Cstieg.ShoppingCart;
 using Cstieg.ShoppingCart.PayPal;
-using ShotgunAdapters.Models;
 using System.Threading.Tasks;
 using System.Linq;
 
@@ -21,21 +20,12 @@ namespace ShotgunAdapters.Controllers
 
         public string GetOrderJson()
         {
-            //string country = Request.Params.Get("country");
             ShoppingCart shoppingCart = ShoppingCart.GetFromSession(HttpContext);
 
-            /*
-            if (country == "US")
-            {
-                shoppingCart.Order.ShipToAddress.Country = country;
-                shoppingCart.RemoveAllShippingCharges();
-            }
-            */
             shoppingCart.SaveToSession(HttpContext);
             return _paypalClient.CreateOrder(shoppingCart);
         }
     
-
         /// <summary>
         /// Verifies and saves the shopping cart
         /// </summary>
@@ -65,11 +55,11 @@ namespace ShotgunAdapters.Controllers
         }
 
         /// <summary>
-        /// Saves the shopping cart to the database.  Must implement by copying this code to main project, and overriding base
+        /// Saves the shopping cart to the database.
         /// </summary>
         /// <param name="shoppingCart"></param>
         /// <param name="payerInfo"></param>
-        protected virtual async Task SaveShoppingCartToDbAsync(ShoppingCart shoppingCart, PayerInfo payerInfo)
+        protected async Task SaveShoppingCartToDbAsync(ShoppingCart shoppingCart, PayerInfo payerInfo)
         {
             var customersDb = db.Customers;
             var addressesDb = db.Addresses;
@@ -94,7 +84,6 @@ namespace ShotgunAdapters.Controllers
                 shoppingCart.Order.Customer = customer;
                 shoppingCart.Order.CustomerId = customer.Id;
             }
-
 
             customer.LastVisited = DateTime.Now;
             if (isNewCustomer)
@@ -164,18 +153,17 @@ namespace ShotgunAdapters.Controllers
         }
 
         /// <summary>
-        /// Custom verification of shopping cart, can be overriden by implementation
+        /// Custom verification of shopping cart
         /// </summary>
         /// <param name="shoppingCart"></param>
         /// <param name="paymentDetails"></param>
-        protected virtual void CustomVerification(ShoppingCart shoppingCart, PaymentDetails paymentDetails)
+        protected void CustomVerification(ShoppingCart shoppingCart, PaymentDetails paymentDetails)
         {
             AddressBase shippingAddress = paymentDetails.Payer.PayerInfo.ShippingAddress;
-            if ((shoppingCart.Order.ShipToAddress.Country == "US" && shippingAddress.Country != "US") ||
-                (shoppingCart.Order.ShipToAddress.Country != "US" && shippingAddress.Country == "US"))
+            if (shippingAddress.Country != "US")
             {
                 // change to JSON error
-                throw new ArgumentException("Your country does not match the country selected!");
+                throw new ArgumentException("International orders are not available");
             }
         }
     }
