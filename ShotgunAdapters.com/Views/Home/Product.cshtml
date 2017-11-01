@@ -69,27 +69,45 @@
     <section id="product-page-description" class="col-md-6">
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.LabelFor(model => model.Name)
             </dt>
-
             <dd>
                 @Html.DisplayFor(model => model.Name)
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.LabelFor(model => model.GunCaliberId)
             </dt>
+            <dd>
+                @Html.DisplayFor(model => model.GunCaliber.Name)
+            </dd>
 
+            <dt>
+                @Html.LabelFor(model => model.AmmunitionCaliberId)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AmmunitionCaliber.Name)
+            </dd>
+
+            <dt>
+                @Html.LabelFor(model => model.Price)
+            </dt>
             <dd>
                 $@Html.DisplayFor(model => model.Price)
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Shipping)
+                @Html.LabelFor(model => model.Shipping)
             </dt>
-
             <dd>
                 $@Html.DisplayFor(model => model.Shipping)
+            </dd>
+
+            <dt>
+                Availability
+            </dt>
+            <dd>
+                In stock
             </dd>
 
             <dt>
@@ -111,5 +129,15 @@
 <section id="product-page-productinfo" class="row">
     <h3>Product information</h3>
     @Html.Raw(Model.ProductInfo)
+    <ul id="product-common-information">
+        <li>Have fun using cheaper and different kinds of ammo in your shotgun!</li>
+        <li>The adapter and the shell eject together out of the gun like a normal shell.</li>
+        <li>Reduced recoil when using adapter.</li>
+        <li>Precision machined to specifications to fit your shotgun.</li>
+        <li>The adapter bore is reamed smooth and polished.</li>
+        <li>Made in the United States.</li>
+        <li>Free shipping</li>
+    </ul>
+
 </section>
 

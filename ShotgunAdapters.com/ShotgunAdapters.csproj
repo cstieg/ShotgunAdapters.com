@@ -257,7 +257,13 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\images\SampleSlide.png" />
+    <Content Include="Content\images\AdapterRearView.png" />
+    <Content Include="Content\images\AdaptersAndShellsOnWoodTable.png" />
+    <Content Include="Content\images\AdapterWith2Shells.png" />
+    <Content Include="Content\images\DoubleBarrelShotgunTarget.png" />
+    <Content Include="Content\images\DoubleBarrelShotgunWithAdapters.png" />
+    <Content Include="Content\images\FiveShotgunAdapters.png" />
+    <Content Include="Content\images\ImageUnavailable.png" />
     <Content Include="Content\images\ShotgunAdaptersLogo.png" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -324,7 +330,9 @@
     <Content Include="Scripts\Site\paypal.js" />
     <Content Include="Scripts\Site\ShoppingCart.js" />
     <Content Include="Scripts\Site\site.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -393,6 +401,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\NicEdit\" />
+    <Folder Include="Content\Products\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
