@@ -4,8 +4,19 @@ body {
     /* Padding for height of navbar header */
     padding: 106px 10px 20px 10px;
     background-image: url("");
-    background-color: #f2f2f2; /* offwhite */
-    background: linear-gradient(to right, lightgray, white 10%, white 90%, lightgray);
+    background-color: #fafafa; /* offwhite */
+}
+
+@media screen and (max-width: 416px) {
+    body {
+        padding-top: 140px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    body {
+        background: linear-gradient(to right, lightgray, white 10%, white 90%, lightgray);
+    }
 }
 
 .body-content {
@@ -142,6 +153,97 @@ span.glyphicon {
         flex-wrap: wrap;
         float: unset;
     }
+}
+
+/* **************************** Main page carousel ******************************** */
+.carousel {
+    margin-bottom: 10px;
+}
+
+.carousel-textbox-center-left,
+.carousel-textbox-center-right,
+.carousel-textbox-left,
+.carousel-textbox-right {
+    position: absolute;
+    top: 10px;
+    bottom: 20px;
+    z-index: 10;
+    color: black;
+    text-align: center;
+}
+
+.carousel-textbox-center-right {
+    right: 3%;
+    left: 30%;
+}
+
+.carousel-textbox-center-left {
+    right: 50%;
+    left: 10%;
+}
+
+.carousel-textbox-right {
+    right: 10%;
+    left: 60%;
+}
+
+.carousel-textbox-left {
+    right: 60%;
+    left: 10%;
+}
+
+.carousel-text {
+    padding: 0;
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.carousel-caption {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2vw;
+}
+
+.s4 {
+    font-size: 3.75vw;
+    line-height: 1;
+}
+
+.s3 {
+    font-size: 3.25vw;
+}
+
+.s2 {
+    font-size: 2.75vw;
+}
+
+.s1 {
+    font-size: 2.5vw;
+}
+
+@media screen and (min-width: 1000px) {
+    .s4 {
+        font-size: 40pt;
+    }
+    
+    .s3 {
+        font-size: 35pt;
+    }
+
+    .s2 {
+        font-size: 30pt;
+    }
+
+    .s1 {
+        font-size: 25pt;
+    }
+}
+
+.carousel-indicators {
+    background: linear-gradient(to right, lightblue, blue 50%, lightblue 100%);
+    border-radius: 14px;
+    width: 50%;
+    margin-left: -25%;
+    bottom: -10%;
 }
 
 /* **************************** Product display *********************************** */
