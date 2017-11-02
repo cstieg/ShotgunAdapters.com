@@ -308,6 +308,7 @@ span.glyphicon {
 #product-page-images img {
     width: auto;
     max-height: 75vh;
+    margin: auto;
 }
 
 #product-page-description dt,
