@@ -13,11 +13,16 @@ function imageUploadPreview(targetId) {
 }
 
 function imageUpload(productId, container) {
+    // global variable to keep track of pending image uploads
+    imageUploadPendingCount = 0;
+    showLightboxMessage("Please wait while image upload finishes", "ImageUploadPendingLightboxMessage");
+
     var e = window.event;
     var $container = $(container);
     for (var i = 0; i < e.srcElement.files.length; i++) {
         var file = e.srcElement.files[i];
         imageUploadSingle(file, productId, $container);
+        imageUploadPendingCount++;
     }
 }
 
@@ -33,6 +38,7 @@ function imageUploadSingle(file, productId, $container) {
             processData: false, // important
             contentType: false, // important
             success: function (response) {
+                imageUploadFinished();
                 var $newPicture = $(`
                             <picture id="image-${response.imageId}" class="col-md-4 col-sm-6 product-image">
                                 <img src="${reader.result}" />
@@ -44,7 +50,8 @@ function imageUploadSingle(file, productId, $container) {
                 $container.append($newPicture);
             },
             error: function (response) {
-                debugger;
+                imageUploadFinished();
+                alert("Failed to upload image");
             }
         });
 
@@ -61,7 +68,14 @@ function imageDelete(productId, imageId) {
             $('#image-' + imageId).remove();
         },
         error: function (response) {
-            debugger;
+            alert("Failed to delete image");
         }
     });
+}
+
+function imageUploadFinished() {
+    imageUploadPendingCount--;
+    if (imageUploadPendingCount === 0) {
+        hideLightboxMessage("ImageUploadPendingLightboxMessage");
+    }
 }

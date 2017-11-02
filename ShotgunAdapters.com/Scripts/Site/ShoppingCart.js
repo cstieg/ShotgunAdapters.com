@@ -187,3 +187,18 @@ function decrementShoppingCartBadge() {
     $('#shoppingCartCount').text(currentCount - 1);
 }
 
+
+(function checkCountry() {
+    if ($('#checkCountryIP').length === 0) return;
+    $.getJSON('https://freegeoip.net/json/', function (data) {
+        if (country !== 'US') {
+            alert("You seem to be outside of the United States.  Please be advised that we cannot ship internationally.");
+        }
+    });
+})();
+
+(function getShoppingCartCount() {
+    $.getJSON('/shoppingCart/ShoppingCartCount', function (data) {
+        $('#shoppingCartCount').text(data.shoppingCartCount);
+    });
+})();
