@@ -20,7 +20,13 @@ namespace ShotgunAdapters.Controllers
             storageService = new FileSystemService(contentFolder);
             imageManager = new ImageManager("images/products", storageService);
 
-            ViewBag.GunCalibers = db.Calibers.ToList();
+            ViewBag.GunCalibers = db.Calibers.Where(c => c.DisplayInMenu).ToList();
+        }
+
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            base.OnActionExecuting(filterContext);
+            filterContext.HttpContext.Response.AddCacheItemDependency("Pages");
         }
 
         public async Task AddCalibersToViewBagAsync()

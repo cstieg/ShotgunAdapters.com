@@ -247,6 +247,10 @@
     <Compile Include="Migrations\201711040057192_WebImageNullProduct.Designer.cs">
       <DependentUpon>201711040057192_WebImageNullProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711041850477_CaliberDisplayInMenu.cs" />
+    <Compile Include="Migrations\201711041850477_CaliberDisplayInMenu.Designer.cs">
+      <DependentUpon>201711041850477_CaliberDisplayInMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Caliber.cs" />
@@ -402,6 +406,7 @@
     <Content Include="Views\Reviews\Index.cshtml" />
     <Content Include="Views\Reviews\_ModifyPartial.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
+    <Content Include="Views\Calibers\_ModifyPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -480,6 +485,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711040057192_WebImageNullProduct.resx">
       <DependentUpon>201711040057192_WebImageNullProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711041850477_CaliberDisplayInMenu.resx">
+      <DependentUpon>201711041850477_CaliberDisplayInMenu.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

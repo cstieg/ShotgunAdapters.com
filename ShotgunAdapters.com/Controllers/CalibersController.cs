@@ -43,7 +43,7 @@ namespace ShotgunAdapters.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Diameter")] Caliber caliber)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Diameter,DisplayInMenu")] Caliber caliber)
         {
             if (ModelState.IsValid)
             {
@@ -75,14 +75,17 @@ namespace ShotgunAdapters.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Diameter")] Caliber caliber)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Diameter,DisplayInMenu")] Caliber caliber)
         {
             if (ModelState.IsValid)
             {
                 // Detach caliber in ViewBag before saving edit
                 List<Caliber> calibers = ViewBag.GunCalibers;
                 var caliberInViewBag = calibers.Find(c => c.Id == caliber.Id);
-                db.Entry(caliberInViewBag).State = EntityState.Detached;
+                if (caliberInViewBag != null)
+                {
+                    db.Entry(caliberInViewBag).State = EntityState.Detached;
+                }
 
                 db.Entry(caliber).State = EntityState.Modified;
                 await db.SaveChangesAsync();

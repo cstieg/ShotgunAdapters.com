@@ -14,5 +14,9 @@ namespace ShotgunAdapters.Models
         [Display(Name = "Diameter in Inches")]
         [Index]
         public decimal? Diameter { get; set; }
+
+        [Display(Name = "Display in Menu")]
+        [Index]
+        public bool DisplayInMenu { get; set; }
     }
 }
