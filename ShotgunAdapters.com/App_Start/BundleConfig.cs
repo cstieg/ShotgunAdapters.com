@@ -20,8 +20,8 @@ namespace ShotgunAdapters
             bundles.Add(new ScriptBundle("~/bundles/js").Include(
                       "~/Scripts/site/site.js",
                       "~/Scripts/site/ShoppingCart.js",
-                      "~/Scripts/site/ImagePreview.js",
-                      "~/Scripts/site/UploadImages.js"));
+                      "~/Scripts/site/ImageUpload.js",
+                      "~/Scripts/site/LightboxMessage.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/nicedit").Include(
                       "~/Scripts/NicEdit/NicEdit.js"));
