@@ -324,6 +324,10 @@ span.glyphicon {
 
 
 /* ******************************** Shopping Cart Page ******************************** */
+.shopping-cart-product-image {
+    max-width: 100%;
+}
+
 #no-paypal {
     width: 250px;
     border: ridge thick green;
