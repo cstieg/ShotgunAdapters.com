@@ -16,14 +16,6 @@ namespace ShotgunAdapters.Models
         [Display(Name = "Ammunition Caliber")]
         public int AmmunitionCaliberId { get; set; }
         public virtual Caliber AmmunitionCaliber { get; set; }
-
-        [StringLength(2000)]
-        [AllowHtml]
-        public string ProductInfo { get; set; }
-
-        [Display(Name = "Product Images")]
-        [InverseProperty("Product")]
-        public virtual ICollection<WebImage> WebImages { get; set; }
     }
 
 }
