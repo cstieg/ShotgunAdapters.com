@@ -1,12 +1,14 @@
-﻿using System.Data.Entity;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web.Mvc;
+using Cstieg.ControllerHelper.ActionFilters;
 using ShotgunAdapters.Models;
-using System.Collections.Generic;
 
 namespace ShotgunAdapters.Controllers
 {
+    [ClearCache]
     [RoutePrefix("Edit/Calibers")]
     public class CalibersController : BaseController
     {

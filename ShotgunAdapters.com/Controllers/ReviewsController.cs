@@ -2,10 +2,12 @@
 using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
+using Cstieg.ControllerHelper.ActionFilters;
 using ShotgunAdapters.Models;
 
 namespace ShotgunAdapters.Controllers
 {
+    [ClearCache]
     [RoutePrefix("Edit/Reviews")]
     public class ReviewsController : BaseController
     {

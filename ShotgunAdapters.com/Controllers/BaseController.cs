@@ -17,21 +17,21 @@ namespace ShotgunAdapters.Controllers
 
         public BaseController()
         {
+            // Set storage service for product images
             storageService = new FileSystemService(contentFolder);
             imageManager = new ImageManager("images/products", storageService);
 
+            // Pass list of calibers to view to display in menu
             ViewBag.GunCalibers = db.Calibers.Where(c => c.DisplayInMenu).ToList();
         }
-
+        
+        /// <summary>
+        /// Add dependency to cache so it is refreshed when updating the dependency
+        /// </summary>
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
             filterContext.HttpContext.Response.AddCacheItemDependency("Pages");
-        }
-
-        public async Task AddCalibersToViewBagAsync()
-        {
-            ViewBag.GunCalibers = await db.Calibers.ToListAsync();
         }
     }
 }

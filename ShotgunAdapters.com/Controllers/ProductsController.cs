@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Cstieg.ControllerHelper;
+using Cstieg.ShoppingCart;
+using Cstieg.ControllerHelper.ActionFilters;
 using Cstieg.WebFiles;
 using Cstieg.WebFiles.Controllers;
 using ShotgunAdapters.Models;
-using Cstieg.ShoppingCart;
 
 namespace ShotgunAdapters.Controllers
 {
+    [ClearCache]
     [RoutePrefix("Edit/Products")]
     public class ProductsController : BaseController
     {
