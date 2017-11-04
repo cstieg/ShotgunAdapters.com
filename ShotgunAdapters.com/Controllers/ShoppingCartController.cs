@@ -1,10 +1,12 @@
-﻿using Cstieg.ControllerHelper;
+﻿using System;
+using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web.Mvc;
+using Cstieg.ControllerHelper;
 using Cstieg.ShoppingCart;
 using Cstieg.ShoppingCart.PayPal;
 using ShotgunAdapters.Models;
-using System;
-using System.Linq;
-using System.Web.Mvc;
 
 namespace ShotgunAdapters.Controllers
 {
@@ -49,10 +51,10 @@ namespace ShotgunAdapters.Controllers
         /// <returns>JSON success response if successful, error response if product already exists</returns>
         [HttpPost, ActionName("AddOrderDetailToShoppingCart")]
         [ValidateAntiForgeryToken]
-        public ActionResult AddOrderDetailToShoppingCart(int id)
+        public async Task<ActionResult> AddOrderDetailToShoppingCart(int id)
         {
             // look up product entity
-            Product product = db.Products.SingleOrDefault(m => m.Id == id);
+            var product = await db.Products.Include(p => p.WebImages).SingleOrDefaultAsync(m => m.Id == id);
             if (product == null)
             {
                 return HttpNotFound();

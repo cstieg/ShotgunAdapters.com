@@ -10,6 +10,7 @@ using Cstieg.ControllerHelper;
 using Cstieg.WebFiles;
 using Cstieg.WebFiles.Controllers;
 using ShotgunAdapters.Models;
+using Cstieg.ShoppingCart;
 
 namespace ShotgunAdapters.Controllers
 {
@@ -102,7 +103,10 @@ namespace ShotgunAdapters.Controllers
             }
             ViewBag.AmmunitionCaliberId = new SelectList(db.Calibers, "Id", "Name", product.AmmunitionCaliberId);
             ViewBag.GunCaliberId = new SelectList(db.Calibers, "Id", "Name", product.GunCaliberId);
+
+            // Pass in list of images for product
             product.WebImages = product.WebImages ?? new List<WebImage>();
+
             return View(product);
         }
 
