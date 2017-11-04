@@ -58,25 +58,36 @@
             @Html.LabelFor(model => model.WebImages, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10 container">
                 <div id="product-images" class="row">
-                    @if (Model.WebImages != null)
-                    {
-                        foreach (var webImage in Model.WebImages)
+                    @if (ViewBag.Title == "Edit")
+                    {                        
+                        if (Model.WebImages != null)
                         {
-                            <picture id="image-@webImage.Id" class="col-md-4 col-sm-6">
-                                <img src="@webImage.ImageUrl" />
-                                <p>@webImage.Caption</p>
-                                <button onclick="imageDelete(@Model.Id, @webImage.Id);return false;">
-                                    Delete Image
-                                </button>
-                            </picture>
+                            foreach (var webImage in Model.WebImages)
+                            {
+                                <picture id="image-@webImage.Id" class="col-md-4 col-sm-6">
+                                    <img src="@webImage.ImageUrl" />
+                                    <p>@webImage.Caption</p>
+                                    <button onclick="imageDelete(@webImage.ProductId, @webImage.Id);return false;">
+                                        Delete Image
+                                    </button>
+                                </picture>
+                            }
                         }
                     }
+
                 </div>
                 <div class="clearfix"></div>
                 <hr />
                 <div class="form-horizontal">
                     <label for="imageFile" class="btn btn-default">Choose image file to add</label>
-                    <input id="imageFile" type="file" multiple name="imageFile" class="hidden" onchange="imageUpload(@Model.Id, '#product-images')" />
+                    @if (Model == null)
+                    {
+                        <input id="imageFile" type="file" multiple name="imageFile" class="hidden" onchange="imageUpload(null, '#product-images')" />
+                    }
+                    else
+                    {
+                        <input id="imageFile" type="file" multiple name="imageFile" class="hidden" onchange="imageUpload(@Model.Id, '#product-images')" />
+                    }
                 </div>
                 <div id="upload-instructions" class="col-md-12">
                     <p>

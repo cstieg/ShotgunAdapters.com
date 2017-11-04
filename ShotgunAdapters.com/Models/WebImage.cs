@@ -7,7 +7,7 @@ namespace ShotgunAdapters.Models
     public class WebImage : WebImageBase
     {
         [ForeignKey("Product")]
-        public int ProductId { get; set; }
+        public int? ProductId { get; set; }
         [JsonIgnore]
         public virtual Product Product { get; set; }
     }

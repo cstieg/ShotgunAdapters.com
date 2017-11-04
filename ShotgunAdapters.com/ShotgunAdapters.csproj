@@ -243,6 +243,10 @@
     <Compile Include="Migrations\201710302203345_ReviewDateIndex.Designer.cs">
       <DependentUpon>201710302203345_ReviewDateIndex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711040057192_WebImageNullProduct.cs" />
+    <Compile Include="Migrations\201711040057192_WebImageNullProduct.Designer.cs">
+      <DependentUpon>201711040057192_WebImageNullProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Caliber.cs" />
@@ -326,7 +330,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\NicEdit\nicEdit.js" />
-    <Content Include="Scripts\Site\ImagePreview.js" />
+    <Content Include="Scripts\Site\ImageUpload.js" />
+    <Content Include="Scripts\Site\LightboxMessage.js" />
     <Content Include="Scripts\Site\paypal.js" />
     <Content Include="Scripts\Site\ShoppingCart.js" />
     <Content Include="Scripts\Site\site.js" />
@@ -472,6 +477,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710302203345_ReviewDateIndex.resx">
       <DependentUpon>201710302203345_ReviewDateIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711040057192_WebImageNullProduct.resx">
+      <DependentUpon>201711040057192_WebImageNullProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

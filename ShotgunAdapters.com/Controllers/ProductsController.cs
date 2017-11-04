@@ -1,14 +1,15 @@
-﻿using System.Data.Entity;
-using System.Threading.Tasks;
-using System.Net;
-using System.Web.Mvc;
-using ShotgunAdapters.Models;
-using Cstieg.WebFiles;
+﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
 using System.Web;
-using Cstieg.WebFiles.Controllers;
+using System.Web.Mvc;
 using Cstieg.ControllerHelper;
-using System;
+using Cstieg.WebFiles;
+using Cstieg.WebFiles.Controllers;
+using ShotgunAdapters.Models;
 
 namespace ShotgunAdapters.Controllers
 {
@@ -39,8 +40,18 @@ namespace ShotgunAdapters.Controllers
         }
 
         // GET: Products/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
+            // delete images that were previously saved to newly created product that was not ultimately saved
+            foreach (var webImage in await db.WebImages.Where(w => w.ProductId == null).ToListAsync())
+            {
+                // remove image files used by product
+                imageManager.DeleteImageWithMultipleSizes(webImage.ImageUrl);
+
+                db.WebImages.Remove(webImage);
+                await db.SaveChangesAsync();
+            }
+
             ViewBag.AmmunitionCaliberId = new SelectList(db.Calibers, "Id", "Name");
             ViewBag.GunCaliberId = new SelectList(db.Calibers, "Id", "Name");
             return View();
@@ -58,6 +69,17 @@ namespace ShotgunAdapters.Controllers
                 // add new model
                 db.Products.Add(product);
                 await db.SaveChangesAsync();
+
+
+                // connect images that were previously saved to product (id = null)
+                foreach (var webImage in await db.WebImages.Where(w => w.ProductId == null).ToListAsync())
+                {
+                    webImage.ProductId = product.Id;
+                    db.Entry(webImage).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                }
+
+
                 return RedirectToAction("Index");
             }
 
@@ -93,7 +115,6 @@ namespace ShotgunAdapters.Controllers
         {
             if (ModelState.IsValid)
             {
-                // add new model
                 db.Entry(product).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -125,29 +146,41 @@ namespace ShotgunAdapters.Controllers
         {
             Product product = await db.Products.FindAsync(id);
 
-            // remove image files used by product
-            imageManager.DeleteImageWithMultipleSizes(product.ImageUrl);
+            // Delete images connected to this product
+            foreach (var webImage in await db.WebImages.Where(w => w.ProductId == product.Id).ToListAsync())
+            {
+                // remove image files used by product
+                imageManager.DeleteImageWithMultipleSizes(webImage.ImageUrl);
+
+                db.WebImages.Remove(webImage);
+                await db.SaveChangesAsync();
+            }
 
             db.Products.Remove(product);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
-        public async Task<JsonResult> AddImage(int id)
+        /// <summary>
+        /// Adds an image to the product model
+        /// </summary>
+        /// <param name="id">Product id</param>
+        /// <returns>Json result containing image id</returns>
+        [HttpPost]
+        public async Task<JsonResult> AddImage(int? id)
         {
-            Product product = await db.Products.FindAsync(id);
-            if (product == null)
+            if (id != null)
             {
-                return this.JError(404, "Can't find product " + id.ToString());
+                Product product = await db.Products.FindAsync(id);
+                if (product == null)
+                {
+                    return this.JError(404, "Can't find product " + id.ToString());
+                }
             }
+
 
             // Check file is exists and is valid image
             HttpPostedFileBase imageFile = _ModelControllersHelper.GetImageFile(ModelState, Request, "", "file");
-
-            if (!ModelState.IsValid)
-            {
-                return this.JError(400, "Error saving image - ModelState not valid");
-            }
 
             // Save image to disk and store filepath in model
             try
@@ -155,7 +188,7 @@ namespace ShotgunAdapters.Controllers
                 string timeStamp = FileManager.GetTimeStamp();
                 WebImage image = new WebImage
                 {
-                    ProductId = product.Id,
+                    ProductId = id,
                     ImageUrl = await imageManager.SaveFile(imageFile, 200, timeStamp),
                     ImageSrcSet = await imageManager.SaveImageMultipleSizes(imageFile, new List<int>() { 800, 400, 200, 100 }, timeStamp)
                 };
@@ -176,6 +209,12 @@ namespace ShotgunAdapters.Controllers
             }
         }
 
+        /// <summary>
+        /// Deletes an image from the product model
+        /// </summary>
+        /// <param name="id">Product id</param>
+        /// <returns>Json result containing image id</returns>
+        [HttpPost]
         public async Task<JsonResult> DeleteImage(int id)
         {
             Product product = await db.Products.FindAsync(id);
