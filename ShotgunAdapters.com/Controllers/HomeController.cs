@@ -23,18 +23,28 @@ namespace ShotgunAdapters.Controllers
             List<Product> products;
             if (id == null)
             {
-                products = await db.Products.ToListAsync();
+                products = await db.Products
+                                    .OrderByDescending(p => p.GunCaliber.Diameter)
+                                    .OrderByDescending(p => p.AmmunitionCaliber.Diameter)
+                                    .ToListAsync();
             }
             else
             {
-                products = await db.Products.Where(p => p.GunCaliberId == id).ToListAsync();
+                products = await db.Products
+                                    .Where(p => p.GunCaliberId == id)
+                                    .OrderByDescending(p => p.AmmunitionCaliber.Diameter)
+                                    .ToListAsync();
             }
             return View(products);
         }
 
         public async Task<ActionResult> ProductsByCaliber(string caliberName)
         {
-            return View("Products", await db.Products.Where(p => p.GunCaliber.Name == caliberName).ToListAsync());
+            var products = await db.Products
+                                    .Where(p => p.GunCaliber.Name == caliberName)
+                                    .OrderByDescending(p => p.AmmunitionCaliber.Diameter)
+                                    .ToListAsync();
+            return View("Products", products);
         }
 
         public async Task<ActionResult> Product(int id)

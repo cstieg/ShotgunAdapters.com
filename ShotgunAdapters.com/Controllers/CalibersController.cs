@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Cstieg.ControllerHelper.ActionFilters;
 using ShotgunAdapters.Models;
+using System.Linq;
 
 namespace ShotgunAdapters.Controllers
 {
@@ -16,7 +17,7 @@ namespace ShotgunAdapters.Controllers
         // GET: Calibers
         public async Task<ActionResult> Index()
         {
-            return View(await db.Calibers.ToListAsync());
+            return View(await db.Calibers.OrderByDescending(c => c.Diameter).ToListAsync());
         }
 
         // GET: Calibers/Details/5

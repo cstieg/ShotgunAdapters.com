@@ -11,8 +11,9 @@ namespace ShotgunAdapters.Models
         [Required]
         public string Name { get; set; }
 
-        [Display(Name = "Diameter in Inches")]
         [Index]
+        [Display(Name = "Diameter in Inches")]
+        [DisplayFormat(DataFormatString = "{0:#.###}")]
         public decimal? Diameter { get; set; }
 
         [Display(Name = "Display in Menu")]

@@ -22,7 +22,7 @@ namespace ShotgunAdapters.Controllers
             imageManager = new ImageManager("images/products", storageService);
 
             // Pass list of calibers to view to display in menu
-            ViewBag.GunCalibers = db.Calibers.Where(c => c.DisplayInMenu).ToList();
+            ViewBag.GunCalibers = db.Calibers.Where(c => c.DisplayInMenu).OrderByDescending(c => c.Diameter).ToList();
         }
         
         /// <summary>

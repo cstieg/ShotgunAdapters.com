@@ -55,8 +55,8 @@ namespace ShotgunAdapters.Controllers
                 await db.SaveChangesAsync();
             }
 
-            ViewBag.AmmunitionCaliberId = new SelectList(db.Calibers, "Id", "Name");
-            ViewBag.GunCaliberId = new SelectList(db.Calibers, "Id", "Name");
+            ViewBag.AmmunitionCaliberId = new SelectList(db.Calibers.OrderByDescending(c => c.Diameter), "Id", "Name");
+            ViewBag.GunCaliberId = new SelectList(db.Calibers.OrderByDescending(c => c.Diameter), "Id", "Name");
             return View();
         }
 
