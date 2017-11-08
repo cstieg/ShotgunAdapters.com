@@ -15,3 +15,14 @@ $('.dropdown-menu').on('mouseout', function () {
         $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
     }
 });
+
+$('select[name=AmmunitionCaliberId]').on('focusout', function (e) {
+    var gunId = $('select[name=GunCaliberId]').val();
+    var gunName = $('select[name=GunCaliberId] > option[value=' + gunId + ']').text();
+    var ammunitionId = $(e.target).val();
+    var ammunitionName = $('select[name=AmmunitionCaliberId] > option[value=' + ammunitionId + ']').text();
+    var $productName = $('input[name=Name]');
+    if ($productName.val() == '') {
+        $productName.val(gunName + ' to shoot ' + ammunitionName);
+    }
+});
