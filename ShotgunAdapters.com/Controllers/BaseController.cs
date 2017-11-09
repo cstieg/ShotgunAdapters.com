@@ -1,9 +1,7 @@
-﻿using Cstieg.WebFiles;
-using ShotgunAdapters.Models;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Web.Mvc;
+using Cstieg.WebFiles;
+using ShotgunAdapters.Models;
 
 namespace ShotgunAdapters.Controllers
 {
@@ -23,6 +21,13 @@ namespace ShotgunAdapters.Controllers
 
             // Pass list of calibers to view to display in menu
             ViewBag.GunCalibers = db.Calibers.Where(c => c.DisplayInMenu).OrderByDescending(c => c.Diameter).ToList();
+            foreach (Caliber gunCaliber in ViewBag.GunCalibers)
+            {
+                gunCaliber.ProductsAmmunition = db.Products
+                                                .Where(p => p.GunCaliberId == gunCaliber.Id)
+                                                .OrderByDescending(p => p.AmmunitionCaliber.Diameter)
+                                                .ToList();
+            }
         }
         
         /// <summary>

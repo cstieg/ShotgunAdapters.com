@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Cstieg.ControllerHelper.ActionFilters;
 using ShotgunAdapters.Models;
-using System.Linq;
 
 namespace ShotgunAdapters.Controllers
 {

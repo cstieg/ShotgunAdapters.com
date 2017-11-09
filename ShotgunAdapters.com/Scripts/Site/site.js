@@ -1,4 +1,5 @@
-﻿$('.dropdown').on('mouseover', function () {
+﻿// Slidedown on product menu
+$('.dropdown').on('mouseover', function () {
     $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
 });
 
@@ -16,6 +17,7 @@ $('.dropdown-menu').on('mouseout', function () {
     }
 });
 
+// Autofill product name after adding calibers
 $('select[name=AmmunitionCaliberId]').on('focusout', function (e) {
     var gunId = $('select[name=GunCaliberId]').val();
     var gunName = $('select[name=GunCaliberId] > option[value=' + gunId + ']').text();

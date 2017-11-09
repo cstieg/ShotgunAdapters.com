@@ -137,6 +137,11 @@ img#site-logo {
     background-color: aliceblue;
 }
 
+.dropdown-menu.dropdown-products {
+    left: 100%;
+    top: 0%;
+}
+
 /* Shopping Cart Icon Fix */
 span.glyphicon {
     line-height: 0;

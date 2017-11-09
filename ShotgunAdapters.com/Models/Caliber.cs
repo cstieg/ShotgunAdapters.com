@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShotgunAdapters.Models
@@ -19,5 +20,8 @@ namespace ShotgunAdapters.Models
         [Display(Name = "Display in Menu")]
         [Index]
         public bool DisplayInMenu { get; set; }
+
+        [NotMapped]
+        public List<Product> ProductsAmmunition { get; set; }
     }
 }

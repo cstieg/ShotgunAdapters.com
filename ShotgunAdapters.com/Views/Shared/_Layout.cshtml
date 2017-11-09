@@ -52,7 +52,17 @@
                         <ul class="dropdown-menu">
                             @foreach (var gunCaliber in ViewBag.GunCalibers)
                             {
-                                <li><a href="/@gunCaliber.Name">@gunCaliber.Name</a></li>
+                                <li class="dropdown">
+                                    <a href="/@gunCaliber.Name">@gunCaliber.Name</a>
+                                    <ul class="dropdown-menu dropdown-products">
+                                        @foreach(var product in gunCaliber.ProductsAmmunition)
+                                        {
+                                            <li>
+                                                <a href="/Home/Product/@product.Id">@product.Name</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
                             }
                             <li>@Html.ActionLink("All Products", "Products")</li>
                         </ul>
