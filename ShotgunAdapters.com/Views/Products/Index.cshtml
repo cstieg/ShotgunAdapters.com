@@ -30,10 +30,10 @@
             @Html.DisplayNameFor(model => model.DoNotDisplay)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AmmunitionCaliber)
+            @Html.DisplayNameFor(model => model.GunCaliber)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GunCaliber)
+            @Html.DisplayNameFor(model => model.AmmunitionCaliber)
         </th>
         <th></th>
     </tr>
@@ -62,10 +62,10 @@
             @Html.DisplayFor(modelItem => item.DoNotDisplay)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AmmunitionCaliber.Name)
+            @Html.DisplayFor(modelItem => item.GunCaliber.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.GunCaliber.Name)
+            @Html.DisplayFor(modelItem => item.AmmunitionCaliber.Name)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
