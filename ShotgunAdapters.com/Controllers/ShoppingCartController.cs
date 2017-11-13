@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Cstieg.ControllerHelper;
-using Cstieg.ShoppingCart;
-using Cstieg.ShoppingCart.PayPal;
+using Cstieg.Sales.Models;
+using Cstieg.Sales.PayPal;
 using ShotgunAdapters.Models;
 
 namespace ShotgunAdapters.Controllers

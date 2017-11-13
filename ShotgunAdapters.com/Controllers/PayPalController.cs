@@ -4,8 +4,8 @@ using System.Data.Entity;
 using System.Web.Mvc;
 using Cstieg.Geography;
 using Cstieg.ControllerHelper;
-using Cstieg.ShoppingCart;
-using Cstieg.ShoppingCart.PayPal;
+using Cstieg.Sales.Models;
+using Cstieg.Sales.PayPal;
 using System.Threading.Tasks;
 using System.Linq;
 

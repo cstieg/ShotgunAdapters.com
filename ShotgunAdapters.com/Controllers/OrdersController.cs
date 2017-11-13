@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
-using Cstieg.ShoppingCart;
+using Cstieg.Sales.Models;
 
 namespace ShotgunAdapters.Controllers
 {

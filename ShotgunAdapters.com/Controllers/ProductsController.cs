@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Cstieg.ControllerHelper;
-using Cstieg.ShoppingCart;
+using Cstieg.Sales.Models;
 using Cstieg.ControllerHelper.ActionFilters;
 using Cstieg.WebFiles;
 using Cstieg.WebFiles.Controllers;

@@ -255,6 +255,10 @@
     <Compile Include="Migrations\201711041936504_MoveWebImage.Designer.cs">
       <DependentUpon>201711041936504_MoveWebImage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711131520307_Sales.cs" />
+    <Compile Include="Migrations\201711131520307_Sales.Designer.cs">
+      <DependentUpon>201711131520307_Sales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Caliber.cs" />
@@ -442,13 +446,13 @@
       <Project>{ea5294a7-7f80-4da0-960b-0ae3d376c841}</Project>
       <Name>Image</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\_Reusables\C#\ShoppingCart.PayPal\ShoppingCart.PayPal\ShoppingCart.PayPal.csproj">
+    <ProjectReference Include="..\..\_Reusables\C#\Sales.PayPal\Sales.PayPal\Sales.PayPal.csproj">
       <Project>{601225f6-0d4d-41ae-89ba-5677d1354bfb}</Project>
-      <Name>ShoppingCart.PayPal</Name>
+      <Name>Sales.PayPal</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\_Reusables\C#\ShoppingCart\ShoppingCart\ShoppingCart.csproj">
+    <ProjectReference Include="..\..\_Reusables\C#\Sales\Sales\Sales.csproj">
       <Project>{db2b6bdc-fae9-4263-8b08-94fbee9a3850}</Project>
-      <Name>ShoppingCart</Name>
+      <Name>Sales</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\_Reusables\C#\WebFiles\WebFiles\WebFiles.csproj">
       <Project>{5612c6e4-f55c-4120-b33d-bcfcc2bda4bd}</Project>
@@ -494,6 +498,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711041936504_MoveWebImage.resx">
       <DependentUpon>201711041936504_MoveWebImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711131520307_Sales.resx">
+      <DependentUpon>201711131520307_Sales.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

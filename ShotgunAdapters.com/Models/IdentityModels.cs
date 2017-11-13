@@ -39,22 +39,22 @@ namespace ShotgunAdapters.Models
                 .Property(c => c.Diameter).HasPrecision(18, 3);
             modelBuilder.Entity<Product>().ToTable("Products");
             modelBuilder.Entity<Review>().ToTable("Reviews");
-            modelBuilder.Entity<Cstieg.ShoppingCart.Order>().ToTable("Orders");
-            modelBuilder.Entity<Cstieg.ShoppingCart.OrderDetail>().ToTable("OrderDetails");
-            modelBuilder.Entity<Cstieg.ShoppingCart.Customer>().ToTable("Customers");
-            modelBuilder.Entity<Cstieg.ShoppingCart.ShipToAddress>().ToTable("Addresses");
-            modelBuilder.Entity<Cstieg.ShoppingCart.WebImage>().ToTable("WebImages");
+            modelBuilder.Entity<Cstieg.Sales.Models.Order>().ToTable("Orders");
+            modelBuilder.Entity<Cstieg.Sales.Models.OrderDetail>().ToTable("OrderDetails");
+            modelBuilder.Entity<Cstieg.Sales.Models.Customer>().ToTable("Customers");
+            modelBuilder.Entity<Cstieg.Sales.Models.ShipToAddress>().ToTable("Addresses");
+            modelBuilder.Entity<Cstieg.Sales.Models.WebImage>().ToTable("WebImages");
         }
 
 
         public DbSet<Caliber> Calibers { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Review> Reviews { get; set; }
-        public DbSet<Cstieg.ShoppingCart.OrderDetail> OrderDetails { get; set; }
-        public DbSet<Cstieg.ShoppingCart.Customer> Customers { get; set; }
-        public DbSet<Cstieg.ShoppingCart.ShipToAddress> Addresses { get; set; }
-        public DbSet<Cstieg.ShoppingCart.Order> Orders { get; set; }
-        public DbSet<Cstieg.ShoppingCart.WebImage> WebImages { get; set; }
+        public DbSet<Cstieg.Sales.Models.OrderDetail> OrderDetails { get; set; }
+        public DbSet<Cstieg.Sales.Models.Customer> Customers { get; set; }
+        public DbSet<Cstieg.Sales.Models.ShipToAddress> Addresses { get; set; }
+        public DbSet<Cstieg.Sales.Models.Order> Orders { get; set; }
+        public DbSet<Cstieg.Sales.Models.WebImage> WebImages { get; set; }
 
 
     }

@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Web.Mvc;
 
 namespace ShotgunAdapters.Models
 {
-    public class Product : Cstieg.ShoppingCart.ProductBase
+    public class Product : Cstieg.Sales.Models.ProductBase
     {
         [ForeignKey("GunCaliber")]
         [Display(Name = "Gun Caliber")]
