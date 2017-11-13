@@ -10,10 +10,11 @@ using ShotgunAdapters.Models;
 namespace ShotgunAdapters.Controllers
 {
     [ClearCache]
-    [RoutePrefix("Edit/Calibers")]
+    [RoutePrefix("edit/calibers")]
+    [Route("{action}/{id?}")]
     public class CalibersController : BaseController
     {
-        [Route]
+        [Route("")]
         // GET: Calibers
         public async Task<ActionResult> Index()
         {

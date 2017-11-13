@@ -46,7 +46,7 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li class="dropdown">
-                        <a href="/Home/Products">
+                        <a href="/Products">
                             Products <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
@@ -58,7 +58,7 @@
                                         @foreach(var product in gunCaliber.ProductsAmmunition)
                                         {
                                             <li>
-                                                <a href="/Home/Product/@product.Id">@product.Name</a>
+                                                <a href="/Product/@product.Id">@product.Name</a>
                                             </li>
                                         }
                                     </ul>
@@ -67,10 +67,10 @@
                             <li>@Html.ActionLink("All Products", "Products")</li>
                         </ul>
                     </li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Reviews", "Reviews", "Home")</li>
                     <li>@Html.ActionLink("FAQ", "FAQ", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>
                         <a href="/shoppingcart">
                             <span class="glyphicon glyphicon-shopping-cart"></span>Cart
