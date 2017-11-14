@@ -259,6 +259,10 @@
     <Compile Include="Migrations\201711131520307_Sales.Designer.cs">
       <DependentUpon>201711131520307_Sales.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711141938178_Country.cs" />
+    <Compile Include="Migrations\201711141938178_Country.Designer.cs">
+      <DependentUpon>201711141938178_Country.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Caliber.cs" />
@@ -501,6 +505,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711131520307_Sales.resx">
       <DependentUpon>201711131520307_Sales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711141938178_Country.resx">
+      <DependentUpon>201711141938178_Country.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
