@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -22,6 +23,7 @@ namespace ShotgunAdapters.Models
         public bool DisplayInMenu { get; set; }
 
         [NotMapped]
+        [JsonIgnore]
         public List<Product> ProductsAmmunition { get; set; }
     }
 }
