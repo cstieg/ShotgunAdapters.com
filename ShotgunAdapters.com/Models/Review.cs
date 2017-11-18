@@ -10,7 +10,7 @@ namespace ShotgunAdapters.Models
         [Key]
         public int Id { get; set; }
 
-        [StringLength(30)]
+        [StringLength(100)]
         public string Title { get; set; }   
 
         [StringLength(30)]
