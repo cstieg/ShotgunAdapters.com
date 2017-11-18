@@ -165,6 +165,10 @@ span.glyphicon {
     margin-bottom: 30px;
 }
 
+.carousel-inner > .item > img {
+    width: 100%;
+}
+
 .carousel-textbox-center-left,
 .carousel-textbox-center-right,
 .carousel-textbox-left,
