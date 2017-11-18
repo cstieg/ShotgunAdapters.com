@@ -9,6 +9,7 @@ using ShotgunAdapters.Models;
 
 namespace ShotgunAdapters.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     [ClearCache]
     [RoutePrefix("edit/calibers")]
     [Route("{action}/{id?}")]

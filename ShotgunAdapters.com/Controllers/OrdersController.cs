@@ -6,6 +6,7 @@ using Cstieg.Sales.Models;
 
 namespace ShotgunAdapters.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class OrdersController : BaseController
     {
         // GET: Orders

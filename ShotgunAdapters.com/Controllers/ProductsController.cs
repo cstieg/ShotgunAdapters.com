@@ -15,6 +15,7 @@ using ShotgunAdapters.Models;
 
 namespace ShotgunAdapters.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     [ClearCache]
     [RoutePrefix("edit/products")]
     [Route("{action}/{id?}")]
