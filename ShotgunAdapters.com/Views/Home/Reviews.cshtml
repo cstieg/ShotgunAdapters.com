@@ -15,7 +15,10 @@
             </div>
             <hr />
             <div class="product-review-footer">
-                <span class="product-review-date">@review.Date.Value.ToShortDateString()</span>
+                @if (review.Date != null)
+                {
+                    <span class="product-review-date">@review.Date.Value.ToShortDateString()</span>
+                }
                 <span class="product-review-person">@review.GetReviewer()</span>
             </div>
         </article>
