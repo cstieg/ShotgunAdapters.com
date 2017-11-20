@@ -84,13 +84,7 @@ namespace ShotgunAdapters.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Detach caliber in ViewBag before saving edit
-                List<Caliber> calibers = ViewBag.GunCalibers;
-                var caliberInViewBag = calibers.Find(c => c.Id == caliber.Id);
-                if (caliberInViewBag != null)
-                {
-                    db.Entry(caliberInViewBag).State = EntityState.Detached;
-                }
+                DetachCalibersInNavbar();
 
                 db.Entry(caliber).State = EntityState.Modified;
                 await db.SaveChangesAsync();

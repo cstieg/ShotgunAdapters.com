@@ -8,6 +8,7 @@ using Cstieg.Sales.Models;
 using Cstieg.Sales.PayPal;
 using System.Threading.Tasks;
 using System.Linq;
+using ShotgunAdapters.Models;
 
 namespace ShotgunAdapters.Controllers
 {
@@ -137,6 +138,8 @@ namespace ShotgunAdapters.Controllers
 
             await db.SaveChangesAsync();
 
+            DetachProductsInNavbar();
+
             // don't add duplicate of product
             for (int i = 0; i < shoppingCart.Order.OrderDetails.Count; i++)
             {
@@ -148,7 +151,6 @@ namespace ShotgunAdapters.Controllers
             // add order to database
             shoppingCart.Order.DateOrdered = DateTime.Now;
             ordersDb.Add(shoppingCart.Order);
-
             await db.SaveChangesAsync();
         }
 

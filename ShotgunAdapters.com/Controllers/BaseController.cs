@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Data.Entity;
+using System.Linq;
 using System.Web.Mvc;
 using Cstieg.WebFiles;
 using ShotgunAdapters.Models;
@@ -29,7 +30,30 @@ namespace ShotgunAdapters.Controllers
                                                 .ToList();
             }
         }
-        
+
+        protected void DetachProductsInNavbar()
+        {
+            // Detach product in ViewBag before saving edit
+            foreach (Caliber caliber in ViewBag.GunCalibers)
+            {
+                foreach (Product product in caliber.ProductsAmmunition)
+                {
+                    db.Entry(product).State = EntityState.Detached;
+                }
+
+            }
+        }
+
+        protected void DetachCalibersInNavbar()
+        {
+            // Detach product in ViewBag before saving edit
+            foreach (Caliber caliber in ViewBag.GunCalibers)
+            {
+                db.Entry(caliber).State = EntityState.Detached;
+            }
+        }
+
+
         /// <summary>
         /// Add dependency to cache so it is refreshed when updating the dependency
         /// </summary>
