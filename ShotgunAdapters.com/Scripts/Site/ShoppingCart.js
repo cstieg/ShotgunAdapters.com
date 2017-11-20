@@ -191,7 +191,7 @@ function decrementShoppingCartBadge() {
 (function checkCountry() {
     if ($('#checkCountryIP').length === 0) return;
     $.getJSON('https://freegeoip.net/json/', function (data) {
-        if (country !== 'US') {
+        if (data.country_code !== 'US') {
             alert("You seem to be outside of the United States.  Please be advised that we cannot ship internationally.");
         }
     });
