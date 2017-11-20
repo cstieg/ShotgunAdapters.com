@@ -25,8 +25,11 @@ namespace ShotgunAdapters.Controllers
         [Route("")]
         public async Task<ActionResult> Index()
         {
-            var products = db.Products.Include(p => p.AmmunitionCaliber).Include(p => p.GunCaliber);
-            return View(await products.ToListAsync());
+            var products = await db.Products
+                                    .OrderByDescending(p => p.AmmunitionCaliber.Diameter)
+                                    .OrderByDescending(p => p.GunCaliber.Diameter)
+                                    .ToListAsync();
+            return View(products);
         }
 
         // GET: Products/Details/5
@@ -115,14 +118,14 @@ namespace ShotgunAdapters.Controllers
         }
 
         // POST: Products/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Price,Shipping,DisplayOnFrontPage,DoNotDisplay,GunCaliberId,AmmunitionCaliberId,ProductInfo")] Product product)
         {
             if (ModelState.IsValid)
             {
+                DetachProductsInNavbar();
+
                 db.Entry(product).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");

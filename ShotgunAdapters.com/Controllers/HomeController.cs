@@ -25,8 +25,8 @@ namespace ShotgunAdapters.Controllers
             {
                 products = await db.Products
                                     .Where(p => !p.DoNotDisplay)
-                                    .OrderByDescending(p => p.GunCaliber.Diameter)
                                     .OrderByDescending(p => p.AmmunitionCaliber.Diameter)
+                                    .OrderByDescending(p => p.GunCaliber.Diameter)
                                     .ToListAsync();
             }
             else
