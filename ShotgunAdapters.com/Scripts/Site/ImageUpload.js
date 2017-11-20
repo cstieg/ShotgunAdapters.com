@@ -38,6 +38,7 @@ function imageUploadSingle(file, productId, $container) {
             processData: false, // important
             contentType: false, // important
             success: function (response) {
+                debugger;
                 imageUploadFinished();
                 var $newPicture = $(`
                             <picture id="image-${response.imageId}" class="col-md-4 col-sm-6 product-image">
@@ -51,6 +52,7 @@ function imageUploadSingle(file, productId, $container) {
             },
             error: function (response) {
                 imageUploadFinished();
+                debugger;
                 alert("Failed to upload image");
             }
         });

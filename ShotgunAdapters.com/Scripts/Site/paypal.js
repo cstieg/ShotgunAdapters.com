@@ -30,12 +30,12 @@ paypal.Button.render({
         return $.get('/paypal/GetOrderJson')
             .then(function (data) {
                 var payment = JSON.parse(data);
-                debugger;
+
                 // Make a call to the REST api to create the payment
                 return actions.payment.create({ payment: payment });
             })
             .catch(function (data) {
-                alert("Error processing order :(");
+                alert('Error processing order: \n' + data.responseJSON.message);
             });
     },
 
@@ -56,7 +56,7 @@ paypal.Button.render({
                         window.location.href = "/ShoppingCart/OrderSuccess";
                     })
                     .catch(function (data) {
-                        alert("Error processing order :(");
+                        alert('Error processing order: \n' + data.responseJSON.message);
                     });
             });
     }
