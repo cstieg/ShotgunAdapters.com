@@ -278,12 +278,33 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\images\AdapterRearView.png" />
-    <Content Include="Content\images\AdaptersAndShellsOnWoodTable.png" />
-    <Content Include="Content\images\AdapterWith2Shells.png" />
-    <Content Include="Content\images\DoubleBarrelShotgunTarget.png" />
-    <Content Include="Content\images\DoubleBarrelShotgunWithAdapters.png" />
-    <Content Include="Content\images\FiveShotgunAdapters.png" />
+    <Content Include="Content\images\20171118130957-AdapterRearView-w100.png" />
+    <Content Include="Content\images\20171118130957-AdapterRearView-w200.png" />
+    <Content Include="Content\images\20171118130957-AdapterRearView-w400.png" />
+    <Content Include="Content\images\20171118130957-AdapterRearView-w800.png" />
+    <Content Include="Content\images\20171118131000-AdapterWith2Shells-w100.png" />
+    <Content Include="Content\images\20171118131000-AdapterWith2Shells-w200.png" />
+    <Content Include="Content\images\20171118131000-AdapterWith2Shells-w400.png" />
+    <Content Include="Content\images\20171118131000-AdapterWith2Shells-w800.png" />
+    <Content Include="Content\images\20171118131002-FiveShotgunAdapters-w200.png" />
+    <Content Include="Content\images\20171118131002-FiveShotgunAdapters-w400.png" />
+    <Content Include="Content\images\20171118131002-FiveShotgunAdapters-w800.png" />
+    <Content Include="Content\images\20171118131003-DoubleBarrelShotgunWithAdapters-w100.png" />
+    <Content Include="Content\images\20171118131003-DoubleBarrelShotgunWithAdapters-w200.png" />
+    <Content Include="Content\images\20171118131003-DoubleBarrelShotgunWithAdapters-w400.png" />
+    <Content Include="Content\images\20171118131003-DoubleBarrelShotgunWithAdapters-w800.png" />
+    <Content Include="Content\images\20171118131008-AdaptersAndShellsOnWoodTable-w100.png" />
+    <Content Include="Content\images\20171118131008-AdaptersAndShellsOnWoodTable-w200.png" />
+    <Content Include="Content\images\20171118131008-AdaptersAndShellsOnWoodTable-w400.png" />
+    <Content Include="Content\images\20171118131008-AdaptersAndShellsOnWoodTable-w800.png" />
+    <Content Include="Content\images\20171118131150-FiveShotgunAdapters-w100.png" />
+    <Content Include="Content\images\20171118131150-FiveShotgunAdapters-w200.png" />
+    <Content Include="Content\images\20171118131150-FiveShotgunAdapters-w400.png" />
+    <Content Include="Content\images\20171118131150-FiveShotgunAdapters-w800.png" />
+    <Content Include="Content\images\20171118150955-DoubleBarrelShotgunTarget-w100.png" />
+    <Content Include="Content\images\20171118150955-DoubleBarrelShotgunTarget-w200.png" />
+    <Content Include="Content\images\20171118150955-DoubleBarrelShotgunTarget-w400.png" />
+    <Content Include="Content\images\20171118150955-DoubleBarrelShotgunTarget-w800.png" />
     <Content Include="Content\images\ImageUnavailable.png" />
     <Content Include="Content\images\ShotgunAdaptersLogo.png" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -337,7 +358,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="PayPal.json" />
-    <Content Include="PayPal - sandbox.json" />
+    <Content Include="PayPal.sandbox.json" />
     <None Include="Properties\PublishProfiles\ShotgunAdapters.com on TMDHosting.pubxml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
