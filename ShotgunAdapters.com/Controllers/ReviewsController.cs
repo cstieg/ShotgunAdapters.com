@@ -11,6 +11,7 @@ namespace ShotgunAdapters.Controllers
     [ClearCache]
     [RoutePrefix("edit/reviews")]
     [Route("{action}/{id?}")]
+    [ValidateInput(false)]
     public class ReviewsController : BaseController
     {
         // GET: Reviews

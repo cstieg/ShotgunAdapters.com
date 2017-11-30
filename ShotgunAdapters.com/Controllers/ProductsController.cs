@@ -19,6 +19,7 @@ namespace ShotgunAdapters.Controllers
     [ClearCache]
     [RoutePrefix("edit/products")]
     [Route("{action}/{id?}")]
+    [ValidateInput(false)]
     public class ProductsController : BaseController
     {
         // GET: Products
