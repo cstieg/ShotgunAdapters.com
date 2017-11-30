@@ -64,8 +64,8 @@
                         {
                             foreach (var webImage in Model.WebImages)
                             {
-                                <picture id="image-@webImage.Id" class="col-md-4 col-sm-6">
-                                    <img src="@webImage.ImageUrl" />
+                                <picture id="image-@webImage.Id">
+                                    <img src="@webImage.ImageUrl" class="thumbnail"/>
                                     <p>@webImage.Caption</p>
                                     <button onclick="imageDelete(@webImage.ProductId, @webImage.Id);return false;">
                                         Delete Image

@@ -438,6 +438,13 @@ span.glyphicon {
     content: 'A';
 }
 
+/* ******************************** Model Scaffolding ********************************* */
+#product-images {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
 /* ********************* Overrides ******************************* */
 .centered {
     margin-left: auto;
