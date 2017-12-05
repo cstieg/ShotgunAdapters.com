@@ -265,6 +265,10 @@
     <Compile Include="Migrations\201711181553295_ReviewTitleLength.Designer.cs">
       <DependentUpon>201711181553295_ReviewTitleLength.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712011557292_update.cs" />
+    <Compile Include="Migrations\201712011557292_update.Designer.cs">
+      <DependentUpon>201712011557292_update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Caliber.cs" />
@@ -540,6 +544,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711181553295_ReviewTitleLength.resx">
       <DependentUpon>201711181553295_ReviewTitleLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712011557292_update.resx">
+      <DependentUpon>201712011557292_update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
