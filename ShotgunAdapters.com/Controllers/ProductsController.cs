@@ -38,7 +38,7 @@ namespace ShotgunAdapters.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Product product = await db.Products.FindAsync(id);
             if (product == null)
@@ -67,8 +67,6 @@ namespace ShotgunAdapters.Controllers
         }
 
         // POST: Products/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,Name,Price,Shipping,DisplayOnFrontPage,DoNotDisplay,GunCaliberId,AmmunitionCaliberId,ProductInfo")] Product product)
@@ -102,7 +100,7 @@ namespace ShotgunAdapters.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Product product = await db.Products.FindAsync(id);
             if (product == null)
@@ -141,7 +139,7 @@ namespace ShotgunAdapters.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Product product = await db.Products.FindAsync(id);
             if (product == null)

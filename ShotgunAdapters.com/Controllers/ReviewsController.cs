@@ -26,7 +26,7 @@ namespace ShotgunAdapters.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Review review = await db.Reviews.FindAsync(id);
             if (review == null)
@@ -43,8 +43,6 @@ namespace ShotgunAdapters.Controllers
         }
 
         // POST: Reviews/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,Title,Person,Date,Location,Text")] Review review)
@@ -75,8 +73,6 @@ namespace ShotgunAdapters.Controllers
         }
 
         // POST: Reviews/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Person,Date,Location,Text")] Review review)
@@ -95,7 +91,7 @@ namespace ShotgunAdapters.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Review review = await db.Reviews.FindAsync(id);
             if (review == null)
