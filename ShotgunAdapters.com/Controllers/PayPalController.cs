@@ -119,6 +119,9 @@ namespace ShotgunAdapters.Controllers
                 }
             }
 
+            // update other models with newly saved customer entity
+            shoppingCart.Order.Customer = customer;
+            shoppingCart.Order.CustomerId = customer.Id;
             shoppingCart.Order.ShipToAddress.Customer = customer;
             shoppingCart.Order.ShipToAddress.CustomerId = customer.Id;
             shoppingCart.Order.ShipToAddress.SetNullStringsToEmpty();
