@@ -1,7 +1,13 @@
 ﻿@model ShotgunAdapters.Models.Product
 
+@section AdditionalMeta
+{
+    <meta name="keywords" content="@Model.AmmunitionCaliber.Name, @Model.GunCaliber.Name" />
+    <meta name="description" content="Shoot @Model.AmmunitionCaliber.Name ammunition in your @Model.GunCaliber.Name shotgun." />
+}
+
 @{
-    ViewBag.Title = "Product";
+    ViewBag.Title = Model.Name;
 }
 
 <h1>@Model.Name</h1>

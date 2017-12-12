@@ -21,6 +21,7 @@ namespace ShotgunAdapters.Controllers
         public async Task<ActionResult> Products(int? id = null)
         {
             List<Product> products;
+            ViewBag.Title = "Products";
             if (id == null)
             {
                 products = await db.Products
@@ -32,9 +33,13 @@ namespace ShotgunAdapters.Controllers
             else
             {
                 products = await db.Products
-                                    .Where(p => p.GunCaliberId == id)
+                                    .Where(p => p.GunCaliberId == id && !p.DoNotDisplay)
                                     .OrderByDescending(p => p.AmmunitionCaliber.Diameter)
                                     .ToListAsync();
+                if (products.Count > 0)
+                {
+                    ViewBag.Title = products.First().GunCaliber.Name + " products";
+                }
             }
             return View(products);
         }
@@ -42,9 +47,10 @@ namespace ShotgunAdapters.Controllers
         public async Task<ActionResult> ProductsByCaliber(string caliberName)
         {
             var products = await db.Products
-                                    .Where(p => p.GunCaliber.Name == caliberName)
+                                    .Where(p => p.GunCaliber.Name == caliberName && !p.DoNotDisplay)
                                     .OrderByDescending(p => p.AmmunitionCaliber.Diameter)
                                     .ToListAsync();
+            ViewBag.Title = caliberName + " products";
             return View("Products", products);
         }
 
