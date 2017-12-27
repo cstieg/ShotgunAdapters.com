@@ -260,6 +260,14 @@ span.glyphicon {
     height: 20px;
 }
 
+.carousel-caption {
+    color: black;
+    background-color: #FFF8;
+    border-radius: 10px;
+    margin: 0;
+    padding: 0;
+}
+
 /* **************************** Product display *********************************** */
 .product-item {
     height: auto;
