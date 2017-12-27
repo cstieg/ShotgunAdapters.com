@@ -131,6 +131,11 @@ namespace ShotgunAdapters.Controllers
             {
                 addressesDb.Add(shoppingCart.Order.ShipToAddress);
             }
+            else
+            {
+                db.Entry(shoppingCart.Order.ShipToAddress).State = EntityState.Unchanged;
+                db.Entry(shoppingCart.Order.BillToAddress).State = EntityState.Unchanged;
+            }
 
             // bill to address the same as shipping address
             if (shoppingCart.Order.BillToAddress == null || shoppingCart.Order.BillToAddress.Address1 == null)
